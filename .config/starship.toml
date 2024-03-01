@@ -1,0 +1,156 @@
+#
+# ███████╗████████╗ █████╗ ██████╗ ███████╗██╗  ██╗██╗██████╗ 
+# ██╔════╝╚══██╔══╝██╔══██╗██╔══██╗██╔════╝██║  ██║██║██╔══██╗
+# ███████╗   ██║   ███████║██████╔╝███████╗███████║██║██████╔╝
+# ╚════██║   ██║   ██╔══██║██╔══██╗╚════██║██╔══██║██║██╔═══╝ 
+# ███████║   ██║   ██║  ██║██║  ██║███████║██║  ██║██║██║     
+# ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝╚═╝     
+#
+
+# Catppuccin palette
+
+palette = "catppuccin_mocha"
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
+
+# General
+
+[username]
+show_always = true
+
+[character]
+disabled = false
+success_symbol = '[](bold fg:green)'
+error_symbol = '[](bold fg:red)'
+vimcmd_symbol = '[](bold fg:green)'
+vimcmd_replace_one_symbol = '[](bold fg:lavender)'
+vimcmd_replace_symbol = '[](bold fg:lavender)'
+vimcmd_visual_symbol = '[](bold fg:yellow)'
+
+[directory]
+truncation_length = 3
+style = "bold lavender"
+read_only = " 󰌾"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+# Programming languages
+
+[bun]
+symbol = "🍞 "
+
+[c]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[docker_context]
+symbol = " "
+
+[dotnet]
+format = "[$symbol(🎯 $tfm )]($style)"
+
+[golang]
+format = '[ ](bold cyan)'
+
+[hostname]
+ssh_symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[python]
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[swift]
+symbol = " "
+
+# Git
+[git_branch]
+symbol = " "
+
+[git_status]
+ahead = "⇡${count}"
+behind = "⇣${count}"
+deleted = "x"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+style = "white"
+
+# Operating Systems
+
+[os.symbols]
+Amazon = " "
+Android = " "
+Arch = " "
+CentOS = " "
+Debian = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Linux = " "
+Macos = " "
+NixOS = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Ubuntu = " "
+Unknown = " "
+Windows = "󰍲 "

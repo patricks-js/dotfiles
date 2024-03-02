@@ -32,7 +32,7 @@ if pkg_installed grub && [ -f /boot/grub/grub.cfg ]; then
     grubtheme="Retroboot"
 
     echo -e "\033[0;32m[BOOTLOADER]\033[0m Setting grub theme // ${grubtheme}"
-    sudo tar -xzf "${CLONE_DIR}"/zip/Grub_${grubtheme}.tar.gz -C /usr/share/grub/themes/
+    sudo tar -xzf "$HOME"/dotfiles/zip/Grub_${grubtheme}.tar.gz -C /usr/share/grub/themes/
     sudo sed -i "/^GRUB_DEFAULT=/c\GRUB_DEFAULT=saved
           /^GRUB_GFXMODE=/c\GRUB_GFXMODE=1280x1024x32,auto
           /^GRUB_THEME=/c\GRUB_THEME=\"/usr/share/grub/themes/${grubtheme}/theme.txt\"

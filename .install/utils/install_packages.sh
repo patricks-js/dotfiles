@@ -50,6 +50,7 @@ install_package_pacman "${pacman_packages_lst[@]}"
 # ------------------------------------------------------
 
 hyprland_packages_lst=(
+  "rustup"
   "jq"
   "rofi"
   "swww"
@@ -62,7 +63,6 @@ hyprland_packages_lst=(
   "dolphin"
   "wlogout"
   "eww-git"
-  "swaylock"
   "sddm-git"
   "hyprland"
   "swayidle"

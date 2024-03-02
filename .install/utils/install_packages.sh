@@ -43,9 +43,7 @@ pacman_packages_lst=(
   "xdg-utils"
 )
 
-for pkg in "${pacman_packages_lst[@]}"; do
-  install_package_pacman "$pkg"
-done
+install_package_pacman "${pacman_packages_lst[@]}"
 
 # ------------------------------------------------------
 # ? Hyprland packages with yay

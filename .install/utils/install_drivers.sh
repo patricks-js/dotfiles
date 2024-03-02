@@ -18,9 +18,7 @@ intel_drivers_lst=(
   "intel-media-driver"
 )
 
-for driver in "${intel_drivers_lst[@]}"; do
-  install_package_pacman "$driver"
-done
+install_package_pacman "${intel_drivers_lst[@]}"
 
 # ------------------------------------------------------
 # ? Media codecs
@@ -39,10 +37,8 @@ codecs_lts=(
   "libjpeg-turbo"
   "libpng"
   "giflib"
-  "webp"
+  "libwebp"
   "ffmpegthumbs"
 )
 
-for codec in "${codecs_lts[@]}"; do
-  install_package_pacman "$codec"
-done
+install_package_pacman "${codecs_lts[@]}"

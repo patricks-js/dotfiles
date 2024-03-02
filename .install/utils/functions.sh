@@ -94,21 +94,13 @@ aur_pkg_available() {
 
 install_package_pacman() {
   local packages=("$@")
-  local installed_packages=()
 
   for package in "${packages[@]}"; do
-    if [[ ! $(pkg_installed "$package") && $(pacman_pkg_available "$package") -eq 0 ]]; then
+    if pacman_pkg_available "$package" && ! pkg_installed "$package"; then
       echo "Installing $package..."
       sudo pacman --noconfirm -S "$package"
-      installed_packages+=("$package")
     fi
   done
-
-  if [ ${#installed_packages[@]} -gt 0 ]; then
-    success_msg "Installed packages: ${installed_packages[*]}"
-  else
-    echo "No packages installed."
-  fi
 }
 
 # ------------------------------------------------------
@@ -117,19 +109,11 @@ install_package_pacman() {
 
 install_package_yay() {
   local packages=("$@")
-  local installed_packages=()
 
   for package in "${packages[@]}"; do
-    if [[ ! $(pkg_installed "$package") && $(aur_pkg_available "$package") -eq 0 ]]; then
+    if aur_pkg_available "$package" && ! pkg_installed "$package"; then
       echo "Installing $package..."
       yay --noconfirm -S "$package"
-      installed_packages+=("$package")
     fi
   done
-
-  if [ ${#installed_packages[@]} -gt 0 ]; then
-    success_msg "Installed packages: ${installed_packages[*]}"
-  else
-    echo "No packages installed."
-  fi
 }

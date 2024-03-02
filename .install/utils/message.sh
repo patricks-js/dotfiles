@@ -38,7 +38,7 @@ success_msg() {
 }
 
 banner_msg() {
-  # check_figlet
+  check_figlet
 
   local msg=$1
 

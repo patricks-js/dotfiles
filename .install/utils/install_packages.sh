@@ -80,9 +80,7 @@ hyprland_packages_lst=(
   "xdg-desktop-portal-hyprland"
 )
 
-for pkg in "${hyprland_packages_lst[@]}"; do
-  install_package_yay "$pkg"
-done
+install_package_yay "${hyprland_packages_lst[@]}"
 
 # ------------------------------------------------------
 # ? Assets (fonts, etc...) with yay
@@ -97,8 +95,6 @@ yay_assets_lst=(
   "ttf-material-design-icons-extended"
 )
 
-for asset in "${yay_assets_lst[@]}"; do
-  install_package_yay "$asset"
-done
+install_package_yay "${yay_assets_lst[@]}"
 
 chsh -s /usr/bin/fish

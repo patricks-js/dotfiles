@@ -30,6 +30,4 @@ programs_lst=(
   "steam"
 )
 
-for program in "${programs_lst[@]}"; do
-  install_package_yay "$program"
-done
+install_package_yay "${programs_lst[@]}"

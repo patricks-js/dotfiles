@@ -9,7 +9,6 @@ banner_msg "Yay"
 
 if pkg_installed yay; then
   echo "yay is already installed!"
-  exit 0
 else
   echo "Installing yay..."
   install_package_pacman "base-devel"

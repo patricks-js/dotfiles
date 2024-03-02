@@ -17,7 +17,7 @@ else
   temp_path=$(dirname "$SCRIPT")
   echo "$temp_path"
   git clone https://aur.archlinux.org/yay-bin.git ~/yay-bin
-  cd ~/yay-git || exit
+  cd ~/yay-bin || exit
   makepkg -si
   yay -Y --gendb
   yay -Y --devel --save

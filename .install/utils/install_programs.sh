@@ -13,8 +13,6 @@ programs_lst=(
   "neovim"
   "mpv"
   "obs-studio"
-  "freedownloadmanager"
-  "emote"
   "steam"
   "zoxide"
   "tokei"

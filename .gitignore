@@ -1,7 +1,6 @@
 SHELL.md
 .vscode
 
-.config/hypr
 .config/rofi
 .config/wlogout
 .editorconfig

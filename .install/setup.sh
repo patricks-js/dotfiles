@@ -49,3 +49,6 @@ source ./pst_install.sh
 banner_msg "Services"
 
 source ./utils/enable_services.sh
+source ./setup_env.sh
+
+success_msg "Please, reboot your system"

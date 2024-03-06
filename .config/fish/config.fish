@@ -39,5 +39,3 @@ alias ssh='kitten ssh'
 
 # Vim editor
 set -Ux EDITOR nvim
-
-alias vim=nvim

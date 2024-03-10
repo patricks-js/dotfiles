@@ -55,17 +55,16 @@ audio_server_list=(
   "libpulse"
 )
 
-install_pacman audio_server_list
+install_pacman ${audio_server_list[@]}
 
 desktop_env_list=(
   "sddm"
-  "gnome"
   "gnome-tweaks"
   "xdg-utils"
   "xdg-desktop-portal"
 )
 
-install_pacman desktop_env_list
+install_pacman ${desktop_env_list[@]}
 
 bluetooth_list=(
   "bluez"
@@ -95,6 +94,8 @@ extra_packages=(
   "neofetch"
   "tmux"
   "stow"
+  "bat"
+  "fzf"
   "starship"
   "lsd"
   "flatpak"
@@ -109,6 +110,7 @@ assets_list=(
   "papirus-icon-theme"
   "ttf-jetbrains-mono-nerd"
   "bibata-cursor-theme-bin"
+  "pop-fonts"
   "ttf-material-design-icons-extended"
 )
 
@@ -172,12 +174,12 @@ list=(
   "${bluetooth_list[@]}"
   "${firewall_list[@]}"
   "${network_list[@]}"
-  "${extra_packages[@]}"
-  "${assets_list[@]}"
   "${drivers_list[@]}"
   "${codecs_list[@]}"
   "${packages_list[@]}"
+  "${extra_packages[@]}"
+  "${assets_list[@]}"
   "${programs_list[@]}"
 )
 
-install_yay list
+install_yay ${list[@]}

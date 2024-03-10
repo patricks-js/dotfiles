@@ -37,6 +37,7 @@ enable_user_service() {
 # ------------------------------------------------------
 
 services_list=(
+	"NetworkManager"
 	"sshd"
 	"ufw"
 	"bluetooth"

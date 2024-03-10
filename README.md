@@ -2,25 +2,21 @@ Setup:
 
 Everything with Catppuccin
 
-- [x] cava
-- [x] fish
-- [x] kitty
-- [x] mpv
-- [x] neofetch
-- [x] tmux
-- [x] swaylock
-  - swaylock-effects
-- [x] wlogout
-  - Waybar config
-- [x] swww
-- [x] starship
-- [ ] hyprland
-- [ ] rofi
-- [ ] eww
 - [ ] cliphist
 
 ANSI Shadow: https://patorjk.com/software/taag/
 
-- Scripts
-  - Instalar icones e fontes
-  - instalar o swayODS
+## Install fisher
+
+```bash
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
+fisher install jorgebucaran/fisher
+fisher install catppuccin/fish
+fish_config theme save "Catppuccin Mocha"
+```
+
+## TPM - Tmux
+
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```

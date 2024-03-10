@@ -1,8 +1,12 @@
 SHELL.md
 .vscode
 
-.config/rofi
-.config/wlogout
+.config/fish/completions
+.config/fish/conf.d
+.config/fish/functions
+.config/fish/themes
+.config/fish/fish_*
+.config/cava/shaders
 .editorconfig
 
 *~

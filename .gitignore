@@ -7,6 +7,7 @@ SHELL.md
 .config/fish/themes
 .config/fish/fish_*
 .config/cava/shaders
+.config/tmux/plugins
 .editorconfig
 
 *~

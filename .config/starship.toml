@@ -91,6 +91,9 @@ format = '[ ](bold cyan)'
 
 [hostname]
 ssh_symbol = " "
+ssh_only = false
+format = "[$hostname](bold fg:mauve) "
+trim_at = "-"
 
 [java]
 symbol = " "

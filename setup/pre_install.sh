@@ -8,7 +8,7 @@ else
 fi
 
 # ------------------------------------------------------
-# ? Pacman conf setup
+# * Pacman conf setup
 # ------------------------------------------------------
 
 if [ -f /etc/pacman.conf ] && [ ! -f /etc/pacman.conf.t2.bkp ]; then
@@ -17,7 +17,7 @@ if [ -f /etc/pacman.conf ] && [ ! -f /etc/pacman.conf.t2.bkp ]; then
   sudo cp /etc/pacman.conf /etc/pacman.conf.t2.bkp
   sudo sed -i "/^#Color/c\Color\nILoveCandy
     /^#VerbosePkgLists/c\VerbosePkgLists
-    /^#ParallelDownloads/c\ParallelDownloads = 10" /etc/pacman.conf
+    /^#ParallelDownloads/c\ParallelDownloads = 7" /etc/pacman.conf
   sudo sed -i '/^#\[multilib\]/,+1 s/^#//' /etc/pacman.conf
 
   sudo pacman -Syyu
@@ -28,7 +28,7 @@ else
 fi
 
 # ------------------------------------------------------
-# ? Grub setup
+# * Grub setup
 # ------------------------------------------------------
 
 if [ ! -f /etc/default/grub.t2.bkp ] && [ ! -f /boot/grub/grub.t2.bkp ]; then
@@ -41,7 +41,7 @@ if [ ! -f /etc/default/grub.t2.bkp ] && [ ! -f /boot/grub/grub.t2.bkp ]; then
 
   echo -e "\033[0;32m[BOOTLOADER]\033[0m Setting grub theme"
 
-  git clone "$repository" && cd "grub"
+  git clone "$repository" && cd "grub" || return
 
   sudo cp -r src/* "/usr/share/grub/themes/"
 
@@ -51,6 +51,7 @@ if [ ! -f /etc/default/grub.t2.bkp ] && [ ! -f /boot/grub/grub.t2.bkp ]; then
         /^#GRUB_SAVEDEFAULT=true/c\GRUB_SAVEDEFAULT=true" /etc/default/grub
 
   sudo grub-mkconfig -o /boot/grub/grub.cfg
+  sudo grub-mkconfig -o /boot/efi/EFI/arch/grub.cfg
 else
   echo -e "\033[0;32m[BOOTLOADER]\033[0m grub is already configured..."
 fi

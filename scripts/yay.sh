@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if pacman -Qi yay; then
+if pacman -Qi yay > /dev/null ; then
   echo "yay is already installed!"
 else
   echo "Installing yay..."

@@ -17,6 +17,9 @@ if pkg_installed sddm; then
         sudo touch /etc/sddm.conf.d/theme.conf
         sudo cp /etc/sddm.conf.d/theme.conf /etc/sddm.conf.d/theme.t2.bkp
         sudo cp /usr/share/sddm/themes/${sddmtheme}/theme.conf /etc/sddm.conf.d/
+        sudo echo "[Theme]" >> /etc/sddm.conf.d/theme.conf
+        sudo echo "Current=catppuccin-flavour" >> /etc/sddm.conf.d/theme.conf
+        sudo systemctl enable sddm
     else
         echo -e "\033[0;33m[SKIP]\033[0m sddm is already configured..."
     fi

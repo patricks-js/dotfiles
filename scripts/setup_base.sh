@@ -29,14 +29,15 @@ print_banner "Install"
 # Load packages
 source ./packages.sh
 
-Install packages
+# Install packages
 install_packages_pacman "${base[@]}";
 install_packages_yay "${cli_toos[@]}";
 install_packages_yay "${assets[@]}";
 install_packages_yay "${apps[@]}";
 
 rm -rf $HOME/.config/fish
-stow $HOME/dotfiles
+cd $HOME/dotfiles && stow .
+cd $HOME/dotfiles/scripts
 
 source ./profile.sh
 
@@ -51,6 +52,7 @@ fi
 # * Post install
 # ------------------------------------------------------
 
+source ./enable_services.sh
 source ./sddm.sh
 source ./cleanup.sh
 source ./reboot.sh

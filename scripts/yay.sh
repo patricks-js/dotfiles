@@ -10,5 +10,6 @@ else
   makepkg -si
   yay -Y --gendb
   yay -Y --devel --save
+  yay
   echo "yay has been installed successfully."
 fi

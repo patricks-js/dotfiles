@@ -50,6 +50,42 @@ aur_available() {
 }
 
 # ------------------------------------------------------
+# * Function: Install packages
+# ------------------------------------------------------
+
+install_packages_pacman() {
+    toInstall=();
+    for pkg; do
+        if [[ $(pkg_installed "${pkg}") == 0 ]]; then
+            continue;
+        fi;
+        toInstall+=("${pkg}");
+    done;
+
+    if [[ "${toInstall[@]}" == "" ]] ; then
+        return;
+    fi;
+
+    sudo pacman --noconfirm -S "${toInstall[@]}";
+}
+
+install_packages_yay() {
+    toInstall=();
+    for pkg; do
+        if [[ $(pkg_installed "${pkg}") == 0 ]]; then
+            continue;
+        fi;
+        toInstall+=("${pkg}");
+    done;
+
+    if [[ "${toInstall[@]}" == "" ]] ; then
+        return;
+    fi;
+
+    yay --noconfirm -S "${toInstall[@]}";
+}
+
+# ------------------------------------------------------
 # * Function: Banner with figlet
 # ---------------------------------------------
 

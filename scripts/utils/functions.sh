@@ -84,15 +84,3 @@ install_packages_yay() {
 
     yay --noconfirm -S "${toInstall[@]}";
 }
-
-# ------------------------------------------------------
-# * Function: Banner with figlet
-# ---------------------------------------------
-
-print_banner() {
-    local msg=$1
-
-    echo -e "${YELLOW}"
-    figlet "$msg"
-    echo -e "${NONE}"
-}

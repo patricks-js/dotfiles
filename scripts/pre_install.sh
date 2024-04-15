@@ -1,8 +1,8 @@
-#!/bin/bash
-
 # ------------------------------------------------------
 # * Check .config folder
 # ------------------------------------------------------
+
+print_banner "Config"
 
 if [ -d ~/.config ]; then
     echo -e "\033[0;33m[SKIP]\033[0m $HOME/.config folder already exists."
@@ -11,9 +11,13 @@ else
     echo -e "\033[0;32m[BOOTLOADER]\033[0m $HOME/.config folder created."
 fi
 
+sleep 1
+
 # ------------------------------------------------------
 # * Pacman conf setup
 # ------------------------------------------------------
+
+print_banner "Pacman conf"
 
 if [ -f /etc/pacman.conf ] && [ ! -f /etc/pacman.conf.t2.bkp ]; then
   echo -e "\033[0;32m[PACMAN]\033[0m adding extra spice to pacman..."
@@ -31,9 +35,13 @@ else
   echo -e "\033[0;33m[SKIP]\033[0m pacman is already configured..."
 fi
 
+sleep 1
+
 # ------------------------------------------------------
 # * Grub setup
 # ------------------------------------------------------
+
+print_banner "Grub"
 
 if [ ! -f /etc/default/grub.t2.bkp ] && [ ! -f /boot/grub/grub.t2.bkp ]; then
   echo -e "\033[0;32m[BOOTLOADER]\033[0m configuring grub..."
@@ -59,3 +67,5 @@ if [ ! -f /etc/default/grub.t2.bkp ] && [ ! -f /boot/grub/grub.t2.bkp ]; then
 else
   echo -e "\033[0;33m[SKIP]\033[0m grub is already configured..."
 fi
+
+sleep 1

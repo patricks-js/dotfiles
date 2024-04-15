@@ -2,4 +2,5 @@ echo -e "${GREEN}"
 figlet "Hyprland"
 echo -e "${NONE}"
 
-# source ./hyprland/wallpaper.sh
+install_packages_yay "${hyrpand[@]}";
+source ./hyprland/wallpaper.sh

@@ -12,7 +12,7 @@ if pkg_installed sddm; then
         wget -P ~/Downloads/ https://github.com/catppuccin/sddm/releases/download/v1.0.0/$sddmtheme.zip
         unzip -o ~/Downloads/$sddmtheme.zip -d /usr/share/sddm/themes/
 
-        pacman -Syu qt6-svg qt6-declarative
+        pacman -Syu qt6-svg qt6-declarative qt5-quickcontrols qt5-quickcontrols2 qt5-graphicaleffects
 
         sudo touch /etc/sddm.conf.d/theme.conf
         sudo cp /etc/sddm.conf.d/theme.conf /etc/sddm.conf.d/theme.t2.bkp

@@ -5,10 +5,10 @@
 # ------------------------------------------------------
 
 if [ -d ~/.config ]; then
-    echo ":: $HOME/.config folder already exists."
+    echo -e "\033[0;33m[SKIP]\033[0m $HOME/.config folder already exists."
 else
     mkdir ~/.config
-    echo ":: $HOME/.config folder created."
+    echo -e "\033[0;32m[BOOTLOADER]\033[0m $HOME/.config folder created."
 fi
 
 # ------------------------------------------------------
@@ -57,5 +57,5 @@ if [ ! -f /etc/default/grub.t2.bkp ] && [ ! -f /boot/grub/grub.t2.bkp ]; then
   sudo grub-mkconfig -o /boot/grub/grub.cfg
   sudo grub-mkconfig -o /boot/efi/EFI/arch/grub.cfg
 else
-  echo -e "\033[0;32m[BOOTLOADER]\033[0m grub is already configured..."
+  echo -e "\033[0;33m[SKIP]\033[0m grub is already configured..."
 fi

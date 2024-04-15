@@ -56,7 +56,7 @@ aur_available() {
 install_packages_pacman() {
     toInstall=();
     for pkg; do
-        if [[ $(pkg_installed "${pkg}") == 0 ]]; then
+        if pkg_installed "$pkg"; then
             continue;
         fi;
         toInstall+=("${pkg}");
@@ -72,7 +72,7 @@ install_packages_pacman() {
 install_packages_yay() {
     toInstall=();
     for pkg; do
-        if [[ $(pkg_installed "${pkg}") == 0 ]]; then
+        if pkg_installed "$pkg"; then
             continue;
         fi;
         toInstall+=("${pkg}");

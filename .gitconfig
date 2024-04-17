@@ -2,8 +2,8 @@
 defaultBranch = main
 
 [user]
-name = Lucas Patrick
-email = tech.patrick.lsilva@gmail.com
+name = <your name>
+email = <your email>
 
 [core]
 editor = code --wait

@@ -1,4 +1,10 @@
-if pkg_installed sddm; then
+#!/usr/bin/env bash
+
+# ------------------------------------------------------
+# * SDDM Theme setup
+# ------------------------------------------------------
+
+if pacman -Qi "sddm" &> /dev/null; then
     echo -e "\033[0;32m[DISPLAYMANAGER]\033[0m detected // sddm"
     if [ ! -d /etc/sddm.conf.d ]; then
         sudo mkdir -p /etc/sddm.conf.d
@@ -7,19 +13,16 @@ if pkg_installed sddm; then
     if [ ! -f /etc/sddm.conf.d/theme.t2.bkp ]; then
         echo -e "\033[0;32m[DISPLAYMANAGER]\033[0m configuring sddm..."
 
-        sddmtheme="catppuccin-mocha"
+        sddm_theme="catppuccin-mocha"
 
-        wget -P ~/Downloads/ https://github.com/catppuccin/sddm/releases/download/v1.0.0/$sddmtheme.zip
-        unzip -o ~/Downloads/$sddmtheme.zip -d /usr/share/sddm/themes/
+        pacman -Syu wget zip unzip qt6-svg qt6-declarative
 
-        pacman -Syu qt6-svg qt6-declarative qt5-quickcontrols qt5-quickcontrols2 qt5-graphicaleffects
+        wget -P ~/Downloads/ https://github.com/catppuccin/sddm/releases/download/v1.0.0/$sddm_theme.zip
+        unzip -o ~/Downloads/$sddm_theme.zip -d /usr/share/sddm/themes/
 
         sudo touch /etc/sddm.conf.d/theme.conf
         sudo cp /etc/sddm.conf.d/theme.conf /etc/sddm.conf.d/theme.t2.bkp
-        sudo cp /usr/share/sddm/themes/${sddmtheme}/theme.conf /etc/sddm.conf.d/
-        sudo echo "[Theme]" >> /etc/sddm.conf.d/theme.conf
-        sudo echo "Current=catppuccin-flavour" >> /etc/sddm.conf.d/theme.conf
-        sudo systemctl enable sddm
+        echo -e "[Theme]\nCurrent=$sddm_theme" | sudo tee /etc/sddm.conf.d/theme.conf
     else
         echo -e "\033[0;33m[SKIP]\033[0m sddm is already configured..."
     fi

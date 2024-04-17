@@ -20,7 +20,3 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
 Make sure you replace your git username and email in `.gitconfig`
-
-fazer um `stow .` em gnomedots e instalar os sequintes pacotes:
-- gitflow-avh
-- gitflow-fishcompletion-avh

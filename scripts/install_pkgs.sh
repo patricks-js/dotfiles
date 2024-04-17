@@ -45,6 +45,7 @@ multimedia_apps=(
     "noto-fonts-cjk"
     "noto-fonts-emoji"
     "papirus-icon-theme"
+    "bibata-cursor-theme-bin"
     "ttf-jetbrains-mono-nerd"
     "ttf-material-design-icons-extended"
 )

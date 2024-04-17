@@ -15,8 +15,6 @@ if pacman -Qi "sddm" &> /dev/null; then
 
         sddm_theme="catppuccin-mocha"
 
-        pacman -Syu wget zip unzip qt6-svg qt6-declarative
-
         wget -P ~/Downloads/ https://github.com/catppuccin/sddm/releases/download/v1.0.0/$sddm_theme.zip
         unzip -o ~/Downloads/$sddm_theme.zip -d /usr/share/sddm/themes/
 

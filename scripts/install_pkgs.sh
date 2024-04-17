@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 system_tools=(
     "networkmanager"
     "network-manager-applet"
@@ -72,31 +70,7 @@ gnome=(
     "ulauncher"
 )
 
-install_app() {
-    local app_name="$1"
-
-    if pacman -Qs "$app_name" >/dev/null 2>&1; then
-        echo "Info: $app_name is already installed."
-    elif yay -Ss "$app_name" >/dev/null 2>&1; then
-        echo "Info: Installing $app_name."
-        yay -S "$app_name"
-    else
-        echo "Error: $app_name not found in Arch repositories or AUR."
-    fi
-}
-
-for app in "${system_tools[@]}"; do
-    install_app "$app"
-done;
-
-for app in "${multimedia_apps[@]}"; do
-    install_app "$app"
-done;
-
-for app in "${utils[@]}"; do
-    install_app "$app"
-done;
-
-for app in "${gnome[@]}"; do
-    install_app "$app"
-done;
+_installPackagesYay "${system_tools[@]}";
+_installPackagesYay "${multimedia_apps[@]}";
+_installPackagesYay "${utils[@]}";
+_installPackagesYay "${gnome[@]}";

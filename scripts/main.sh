@@ -1,4 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
+source utils/functions.sh
+clear
 
 # ------------------------------------------------------
 # * Setting up

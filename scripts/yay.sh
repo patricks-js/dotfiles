@@ -3,8 +3,9 @@
 # ------------------------------------------------------
 # * Yay installation
 # ------------------------------------------------------
-
-if ! pacman -Qi "yay" &> /dev/null; then
+if [[ $(_isInstalledPacman "yay") == 0 ]]; then
+    echo -e "\033[0;33m[SKIP]\033[0m yay is already installed."
+else
     echo "Installing yay..."
 
     pacman -S --needed base-devel git
@@ -16,6 +17,4 @@ if ! pacman -Qi "yay" &> /dev/null; then
     yay
     
     echo "yay has been installed successfully."
-else
-    echo -e "\033[0;33m[SKIP]\033[0m yay is already installed."
 fi

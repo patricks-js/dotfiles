@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # ------------------------------------------------------
 # * Install apps
@@ -19,13 +19,4 @@ apps=(
     "stremio"
 )
 
-for app in "${apps[@]}"; do
-    if pacman -Qs "$app" >/dev/null 2>&1; then
-        echo "Info: $app is already installed."
-    elif yay -Ss "$app" >/dev/null 2>&1; then
-        echo "Info: Installing $app."
-        yay -S --noconfirm "$app"
-    else
-        echo "Error: $app not found in Arch repositories or AUR."
-    fi
-done;
+_installPackagesYay "${apps[@]}";

@@ -16,7 +16,7 @@ if pacman -Qi "sddm" &> /dev/null; then
         sddm_theme="catppuccin-mocha"
 
         wget -P ~/Downloads/ https://github.com/catppuccin/sddm/releases/download/v1.0.0/$sddm_theme.zip
-        unzip -o ~/Downloads/$sddm_theme.zip -d /usr/share/sddm/themes/
+        sudo unzip -o ~/Downloads/$sddm_theme.zip -d /usr/share/sddm/themes/
 
         sudo touch /etc/sddm.conf.d/theme.conf
         sudo cp /etc/sddm.conf.d/theme.conf /etc/sddm.conf.d/theme.t2.bkp

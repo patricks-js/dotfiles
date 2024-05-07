@@ -1,6 +1,7 @@
 # Custom ignore
 
 \scripts
+\.directory
 
 # Default stow ignore.
 

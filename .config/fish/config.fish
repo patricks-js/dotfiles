@@ -39,3 +39,7 @@ alias ssh='kitten ssh'
 
 # Vim editor
 set -Ux EDITOR nvim
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH

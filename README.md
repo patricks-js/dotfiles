@@ -9,7 +9,7 @@ Here are some details about my setup:
 - **Status Bar**: [Waybar](https://github.com/Alexays/Waybar)
 - **Widgets:** [eww](https://github.com/elkowar/eww)
 - **Terminal**: [kitty](https://sw.kovidgoyal.net/kitty/)
-- **Notifications**: [dunst](https://github.com/dunst-project/dunst)
+- **Notifications**: [swaync](https://github.com/ErikReider/SwayNotificationCenter)
 - **Video Player**: [mpv](https://github.com/mpv-player/mpv)
 - **Shell:** [fish](https://fishshell.com/)
 - **File Manager:** [thunar](https://github.com/xfce-mirror/thunar)

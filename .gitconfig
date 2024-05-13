@@ -1,18 +1,23 @@
 [init]
-defaultBranch = main
+	defaultBranch = main
 
 [user]
-name = Lucas Patrick
-email = tech.patrick.lsilva@gmail.com
+	name = Lucas Patrick
+	email = tech.patrick.lsilva@gmail.com
 
 [core]
-editor = code --wait
+	editor = nvim
 
 [alias]
-st = !git status -s
-cm = !git add --all && git commit -m
-ck = !git checkout
-l = !git log --pretty=format:'%C(blue)%h%C(red)%d %C(white)%s - %C(cyan)%cn, %C(green)%cr'
-
-[pull]
-rebase = false
+	st = status -s
+	conf = config --global --edit
+	aa = add --all
+	cm = commit -m
+	ci = commit -a -m
+	ck = checkout
+	dc = checkout .	
+	pr = pull --rebase
+	br = branch
+	bra = branch -a
+	l = log --pretty=format:'%C(blue)%h%C(red)%d %C(white)%s - %C(cyan)%cn, %C(green)%cr'
+	amend = commit -a --amend --no-edit

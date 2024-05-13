@@ -22,42 +22,10 @@ fi
 
 current_wallpaper=$(cat "$cache_file")
 
-case $1 in
-
-    # Load wallpaper from .cache of last session 
-    "init")
-        sleep 1
-        if [ -f $cache_file ]; then
-            wal -q -i $current_wallpaper
-        else
-            wal -q -i ~/wallpaper/
-        fi
-    ;;
-
-    # Select wallpaper with rofi
-    "select")
-        sleep 0.2
-        selected=$( find "$HOME/wallpaper" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) -exec basename {} \; | sort -R | while read rfile
-        do
-            echo -en "$rfile\x00icon\x1f$HOME/wallpaper/${rfile}\n"
-        done | rofi -dmenu -i -replace -config ~/dotfiles/rofi/config-wallpaper.rasi)
-        if [ ! "$selected" ]; then
-            echo "No wallpaper selected"
-            exit
-        fi
-        wal -q -i ~/wallpaper/$selected
-    ;;
-
-    # Randomly select wallpaper 
-    *)
-        wal -q -i ~/wallpaper/
-    ;;
-
-esac
-
 # ----------------------------------------------------- 
 # get wallpaper image name
 # ----------------------------------------------------- 
+wallpaper="$HOME/wallpaper/default.png"
 newwall=$(echo $wallpaper | sed "s|$HOME/wallpaper/||g")
 
 # ----------------------------------------------------- 
@@ -67,10 +35,19 @@ transition_type="wipe"
 # transition_type="outer"
 # transition_type="random"
 
+wal_tpl="""
+# Preload Wallpapers
+preload = $wallpaper
+
+# Set Wallpapers
+wallpaper = ,$wallpaper
+
+#enable splash text rendering over the wallpaper
+splash = false
+"""
+
 killall hyprpaper
-wal_tpl=$(cat $HOME/dotfiles/.config/.settings/hyprpaper.tpl)
-output=${wal_tpl//WALLPAPER/$wallpaper}
-echo "$output" > $HOME/dotfiles/.config/hypr/hyprpaper.conf
+echo "$wal_tpl" > $HOME/dotfiles/.config/hypr/hyprpaper.conf
 hyprpaper &
 
 if [ "$1" == "init" ] ;then
@@ -82,7 +59,7 @@ else
     # ----------------------------------------------------- 
     # Reload Hyprctl.sh
     # -----------------------------------------------------
-    $HOME/.config/ml4w-hyprland-settings/hyprctl.sh &
+    # $HOME/.config/ml4w-hyprland-settings/hyprctl.sh &
 fi
 
 # ----------------------------------------------------- 

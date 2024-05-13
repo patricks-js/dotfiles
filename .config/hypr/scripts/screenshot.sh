@@ -1,28 +1,58 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
-DIR="$HOME/Pictures/screenshots/"
-NAME="screenshot_$(date +%d%m%Y_%H%M%S).png"
+restore_shader() {
+	if [ -n "$shader" ]; then
+		hyprshade on "$shader"
+	fi
+}
 
-option2="Selected area"
-option3="Fullscreen (delay 3 sec)"
+# Saves the current shader and turns it off
+save_shader() {
+	shader=$(hyprshade current)
+	hyprshade off
+	trap restore_shader EXIT
+}
 
-options="$option2\n$option3"
+save_shader # Saving the current shader
 
-choice=$(echo -e "$options" | rofi -dmenu -replace -config ~/dotfiles/rofi/config-screenshot.rasi -i -no-show-icons -l 2 -width 30 -p "Take Screenshot")
+if [ -z "$XDG_PICTURES_DIR" ]; then
+	XDG_PICTURES_DIR="$HOME/Pictures"
+fi
 
-case $choice in
-    $option2)
-        grim -g "$(slurp)" "$DIR$NAME"
-        xclip -selection clipboard -t image/png -i "$DIR$NAME"
-        notify-send "Screenshot created and copied to clipboard" "Mode: Selected area"
-        swappy -f "$DIR$NAME"
-    ;;
-    $option3)
-        sleep 3
-        grim "$DIR$NAME" 
-        xclip -selection clipboard -t image/png -i "$DIR$NAME"
-        notify-send "Screenshot created and copied to clipboard" "Mode: Fullscreen"
-        swappy -f "$DIR$NAME"
-    ;;
+scrDir=$(dirname "$(realpath "$0")")
+save_dir="${2:-$XDG_PICTURES_DIR/Screenshots}"
+save_file=$(date +'%y%m%d_%Hh%Mm%Ss_screenshot.png')
+temp_screenshot="/tmp/screenshot.png"
+
+mkdir -p $save_dir
+
+function print_error
+{
+	cat <<"EOF"
+    ./screenshot.sh <action>
+    ...valid actions are...
+        p  : print all screens
+        s  : snip current screen
+        sf : snip current screen (frozen)
+        m  : print focused monitor
+EOF
+}
+
+case $1 in
+p) # print all outputs
+	grimblast copysave screen $temp_screenshot && restore_shader && swappy -f $temp_screenshot ;;
+s) # drag to manually snip an area / click on a window to print it
+	grimblast copysave area $temp_screenshot && restore_shader && swappy -f $temp_screenshot ;;
+sf) # frozen screen, drag to manually snip an area / click on a window to print it
+	grimblast --freeze copysave area $temp_screenshot && restore_shader && swappy -f $temp_screenshot ;;
+m) # print focused monitor
+	grimblast copysave output $temp_screenshot && restore_shader && swappy -f $temp_screenshot ;;
+*) # invalid option
+	print_error ;;
 esac
 
+rm "$temp_screenshot"
+
+if [ -f "${save_dir}/${save_file}" ]; then
+	notify-send -a "t1" -i "${save_dir}/${save_file}" "saved in ${save_dir}"
+fi

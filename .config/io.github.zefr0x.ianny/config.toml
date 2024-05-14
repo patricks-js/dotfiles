@@ -1,0 +1,10 @@
+[timer]
+idle_timeout = 240
+short_break_timeout = 1200 # each 20 minutoes
+long_break_timeout = 5400  # each 1:30 hour
+short_break_duration = 240 # 4 minutes of pause
+long_break_duration = 900  # 15 minutes of pause
+
+[notification]
+show_progress_bar = true
+minimum_update_delay = 1

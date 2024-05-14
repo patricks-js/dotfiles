@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Cache file for holding the current wallpaper
+path_dir="$HOME/wallpaper"
 cache_file="$HOME/.cache/current_wallpaper"
 blurred="$HOME/.cache/blurred_wallpaper.png"
 square="$HOME/.cache/square_wallpaper.png"
@@ -11,22 +12,28 @@ blur="50x30"
 # Create cache file if not exists
 if [ ! -f $cache_file ] ;then
     touch $cache_file
-    echo "$HOME/wallpaper/default.png" > "$cache_file"
+    echo "$path_dir/default.png" > "$cache_file"
 fi
 
 # Create rasi file if not exists
 if [ ! -f $rasi_file ] ;then
     touch $rasi_file
-    echo "* { current-image: url(\"$HOME/wallpaper/default.png\", height); }" > "$rasi_file"
+    echo "* { current-image: url(\"$path_dir/default.png\", height); }" > "$rasi_file"
 fi
 
 current_wallpaper=$(cat "$cache_file")
+# ----------------------------------------------------- 
+# Get random wallpaper image
+# ----------------------------------------------------- 
+walls=$(find "$path_dir/" -type f \( -name "*.png" -o -name "*.jpg" \))
 
-# ----------------------------------------------------- 
-# get wallpaper image name
-# ----------------------------------------------------- 
-wallpaper="$HOME/wallpaper/default.png"
-newwall=$(echo $wallpaper | sed "s|$HOME/wallpaper/||g")
+if [ -z "$walls" ]; then
+    echo "No one wallpaper found in '$path_dir'."
+    exit 1
+fi
+
+wallpaper=$(find "$HOME/wallpaper/" -type f \( -name "*.png" -o -name "*.jpg" \) | shuf -n 1)
+newwall=$(echo $wallpaper | sed "s|$path_dir/||g")
 
 # ----------------------------------------------------- 
 # Set the new wallpaper
@@ -38,7 +45,6 @@ transition_type="wipe"
 wal_tpl="""
 # Preload Wallpapers
 preload = $wallpaper
-
 # Set Wallpapers
 wallpaper = ,$wallpaper
 
@@ -55,11 +61,6 @@ if [ "$1" == "init" ] ;then
 else
     sleep 1
     notify-send "Changing wallpaper ..." "with image $newwall"
-    
-    # ----------------------------------------------------- 
-    # Reload Hyprctl.sh
-    # -----------------------------------------------------
-    # $HOME/.config/ml4w-hyprland-settings/hyprctl.sh &
 fi
 
 # ----------------------------------------------------- 

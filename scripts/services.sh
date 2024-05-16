@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# ------------------------------------------------------
-# * Clean up
-# ------------------------------------------------------
-
 # Check for running NetworkManager.service
 if [[ $(systemctl list-units --all -t service --full --no-legend "NetworkManager.service" | sed 's/^\s*//g' | cut -f1 -d' ') == "NetworkManager.service" ]];then
     echo ":: NetworkManager.service already running."

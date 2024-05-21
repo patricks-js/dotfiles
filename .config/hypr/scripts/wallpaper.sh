@@ -22,9 +22,11 @@ if [ ! -f $rasi_file ] ;then
 fi
 
 current_wallpaper=$(cat "$cache_file")
+
 # ----------------------------------------------------- 
 # Get random wallpaper image
 # ----------------------------------------------------- 
+
 walls=$(find "$path_dir/" -type f \( -name "*.png" -o -name "*.jpg" \))
 
 if [ -z "$walls" ]; then
@@ -33,14 +35,12 @@ if [ -z "$walls" ]; then
 fi
 
 wallpaper=$(find "$HOME/wallpaper/" -type f \( -name "*.png" -o -name "*.jpg" \) | shuf -n 1)
+
 newwall=$(echo $wallpaper | sed "s|$path_dir/||g")
 
 # ----------------------------------------------------- 
 # Set the new wallpaper
 # -----------------------------------------------------
-transition_type="wipe"
-# transition_type="outer"
-# transition_type="random"
 
 wal_tpl="""
 # Preload Wallpapers
@@ -63,9 +63,12 @@ else
     notify-send "Changing wallpaper ..." "with image $newwall"
 fi
 
+wal -q -i $wallpaper
+
 # ----------------------------------------------------- 
 # Created blurred wallpaper
 # -----------------------------------------------------
+
 if [ "$1" == "init" ] ;then
     echo ":: Init"
 else
@@ -73,7 +76,9 @@ else
 fi
 
 magick $wallpaper -resize 75% $blurred
+
 echo ":: Resized to 75%"
+
 if [ ! "$blur" == "0x0" ] ;then
     magick $blurred -blur $blur $blurred
     echo ":: Blurred"

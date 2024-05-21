@@ -2,11 +2,11 @@
 
 source fn.sh
 
-if ! pkg_installed git; then
-    sudo pacman -S git
-fi
+#if ! pkg_installed git; then
+#    sudo pacman -S git
+#fi
 
-./yay.sh
+#./yay.sh
 
 while read pkg; do
     if [ -z $pkg ]; then
@@ -36,5 +36,5 @@ fi
 
 if [ $(echo $pkg_aur | wc -w) -gt 0 ]; then
     echo "installing $pkg_aur from aur..."
-    yay ${use_default} -S $pkg_aur
+    yay --noconfirm -S $pkg_aur
 fi

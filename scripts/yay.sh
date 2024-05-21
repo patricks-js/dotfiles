@@ -7,20 +7,15 @@ if pkg_installed yay; then
     exit 0
 fi
 
-if [ -d ~/aur_temp ]; then
-    echo "~/aur_temp directory exists..."
-    rm -rf ~/aur_temp/yay
-fi
-
 echo "Installing yay..."
 
-pacman -S --needed base-devel git
-git clone https://aur.archlinux.org/yay-bin.git ~/aur_temp/yay
-cd ~/yay-bin || exit
-makepkg ${use_default} -si
+sudo pacman -S --needed base-devel git
+git clone https://aur.archlinux.org/yay-bin.git ~/yay
+cd ~/yay || exit
+makepkg -si
 yay -Y --gendb
 yay -Y --devel --save
 yay
 
 echo "yay has been installed successfully."
-rm -rf ~/aur_temp
+rm -rf ~/yay

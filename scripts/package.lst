@@ -16,7 +16,7 @@ brightnessctl
 udiskie
 ufw
 openssh
-sddm-git
+sddm
 qt6-5compat
 qt6-declarative
 qt6-svg
@@ -33,7 +33,6 @@ nemo
 nemo-engrampa
 wlogout
 grimblast-git
-slurp
 swappy
 cliphist
 polkit-gnome
@@ -53,7 +52,7 @@ qt6-wayland
 firefox
 mpv
 mousepad
-obsidian
+obsidian-bin
 kitty
 neovim
 lsd
@@ -77,11 +76,19 @@ intel-media-driver
 vulkan-intel
 noto-fonts
 noto-fonts-cjk
-noto-fonts-emoji
+ttf-joypixels
 ttf-jetbrains-mono-nerd
 ttf-font-awesome
+otf-font-awesome
 ttf-material-design-icons-extended
+papirus-icon-theme
 ffmpeg
 libjpeg-turbo
 libpng
 libwebp
+brave-bin
+fzf
+tokei
+cava
+visual-studio-code-bin
+bibata-cursor-theme-bin

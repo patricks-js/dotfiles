@@ -45,6 +45,11 @@ else
     echo ":: sddm.service activated successfully."    
 fi
 
+if [ -d ~/dotfiles/hypr/settings/ ] ;then
+    rm -rf ~/dotfiles/hypr/settings
+    echo ":: ~/dotfiles/hypr/settings removed."
+fi
+
 # Create default folder structure
 xdg-user-dirs-update
 echo 

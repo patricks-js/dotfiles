@@ -2,6 +2,15 @@
 
 source fn.sh
 
+if [ ! -f ~/.cache/wal/colors-hyprland.conf ]; then
+    wal -i ~/wallpaper/default.jpg
+    echo "Pywal and templates activated."
+    echo ""
+else
+    echo "Pywal already activated."
+    echo ""
+fi
+
 if pkg_installed nemo; then
     gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty && \
     gsettings set org.nemo.preferences.menu-config background-menu-open-as-root false && \

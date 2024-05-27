@@ -2,12 +2,6 @@
 
 source fn.sh
 
-#if ! pkg_installed git; then
-#    sudo pacman -S git
-#fi
-
-#./yay.sh
-
 while read pkg; do
     if [ -z $pkg ]; then
         continue

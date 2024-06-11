@@ -11,13 +11,18 @@
 [alias]
 	st = status -s
 	conf = config --global --edit
-	aa = add --all
-	cm = commit -m
-	ci = commit -a -m
-	ck = checkout
-	dc = checkout .	
-	pr = pull --rebase
-	br = branch
-	bra = branch -a
 	l = log --pretty=format:'%C(blue)%h%C(red)%d %C(white)%s - %C(cyan)%cn, %C(green)%cr'
-	amend = commit -a --amend --no-edit
+	a = add .
+	b = branch
+	cm = commit -m
+	ci = !git a && git cm
+	cn = clone
+	rls = remote -v
+	pr = pull --rebase
+	ps = push
+	undo = checkout .
+	rollback = reset --soft HEAD~1 # Undo last commit
+	ck = checkout
+	bra = branch -a
+	amend = commit --amend --no-edit
+	ignore = "!f() { git rm --cached `git ls-files -i -c --exclude-from=.gitignore`; } ; f" # Removes files that are in .gitignore from the repository

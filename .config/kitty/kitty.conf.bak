@@ -7,9 +7,11 @@ bold_italic_font auto
 # Settings
 font_size 10.0
 window_padding_width 8
-linux_display_server x11
+background_opacity 0.7
+background_blur 32 
+# hide_window_decorations yes
 
 # BEGIN_KITTY_THEME
-# Tokyo Night
+# Catppuccin-Mocha
 include current-theme.conf
 # END_KITTY_THEME

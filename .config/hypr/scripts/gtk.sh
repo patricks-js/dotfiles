@@ -1,5 +1,4 @@
-#!/bin/bash
-# Source: https://github.com/swaywm/sway/wiki/GTK-3-settings-on-Wayland
+#!/usr/bin/env bash
 
 config="$HOME/.config/gtk-3.0/settings.ini"
 

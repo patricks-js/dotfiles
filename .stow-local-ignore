@@ -1,15 +1,4 @@
-scripts
-wallpaper
-.local
-.config/cava
-.config/hypr
-.config/nwg-look
-.config/rofi
-.config/swaync
-.config/waybar
-.config/wlogout
-
-# Comments and blank lines are allowed.
+# Comments and blank lines are allowed
 
 RCS
 .+,v

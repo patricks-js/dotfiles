@@ -1,14 +1,3 @@
-#
-# ███████╗██╗███████╗██╗  ██╗
-# ██╔════╝██║██╔════╝██║  ██║
-# █████╗  ██║███████╗███████║
-# ██╔══╝  ██║╚════██║██╔══██║
-# ██║     ██║███████║██║  ██║
-# ╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝
-# A smart and user-friendly command line
-# https://fishshell.com/
-# cSpell:words shellcode pkgx direnv
-
 set -g fish_greeting
 
 if status is-interactive

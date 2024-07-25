@@ -75,3 +75,6 @@ packagesYay=(
     "tmux"
     "plymouth-theme-arch-logo"
 );
+
+_installPackagesPacman "${packagesPacman[@]}";
+_installPackagesYay "${packagesYay[@]}";

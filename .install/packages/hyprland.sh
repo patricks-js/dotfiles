@@ -19,3 +19,5 @@ packagesHyprland=(
     "waybar"
     "hyprshade"
 );
+
+_installPackagesYay "${packagesHyprland[@]}";

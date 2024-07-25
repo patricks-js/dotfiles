@@ -1,51 +1,35 @@
 #!/usr/bin/env bash
 
-set -e
+_installPackagesPacman() {
+    toInstall=();
+    for pkg; do
+        if [[ $(_isInstalledPacman "${pkg}") == 0 ]]; then
+            echo ":: ${pkg} is already installed.";
+            continue;
+        fi;
+        toInstall+=("${pkg}");
+    done;
 
-export use_default="--noconfirm"
+    if [[ "${toInstall[@]}" == "" ]] ; then
+        return;
+    fi;
 
-pkg_installed() {
-    local arg=$1
-
-    if pacman -Qi $arg &>/dev/null; then
-        return 0
-    else
-        return 1
-    fi
+    sudo pacman --noconfirm -S "${toInstall[@]}";
 }
 
-arch_pkg_available() {
-    local PkgIn=$1
+_installPackagesYay() {
+    toInstall=();
+    for pkg; do
+        if [[ $(_isInstalledYay "${pkg}") == 0 ]]; then
+            echo ":: ${pkg} is already installed.";
+            continue;
+        fi;
+        toInstall+=("${pkg}");
+    done;
 
-    if pacman -Si $PkgIn &>/dev/null; then
-        return 0
-    else
-        return 1
-    fi
-}
+    if [[ "${toInstall[@]}" == "" ]] ; then
+        return;
+    fi;
 
-aur_pkg_available() {
-    local PkgIn=$1
-
-    if yay -Si $PkgIn &>/dev/null; then
-        return 0
-    else
-        return 1
-    fi
-}
-
-is_me() {
-    if [ $USER == "patrick" ];then
-        return 0
-    else
-        return 1
-    fi
-}
-
-is_grub() {
-    if [ -d "/boot/grub" ];then
-        return 0
-    else
-        return 1
-    fi
+    yay --noconfirm -S "${toInstall[@]}";
 }

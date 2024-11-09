@@ -49,4 +49,4 @@ fi
 xdg-user-dirs-update
 echo 
 
-echo ":: Cleanup done."
+echo ":: Services started successfully."

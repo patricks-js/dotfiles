@@ -5,8 +5,8 @@ if sudo pacman -Qs yay > /dev/null ; then
 else
     echo "Installing yay..."
 
-    sudo pacman -S --needed base-devel git
-    git clone https://aur.archlinux.org/yay-bin.git ~/yay
+    sudo pacman -S --needed git base-devel
+    git clone https://aur.archlinux.org/yay.git ~/yay
     cd ~/yay || exit
     makepkg -si
     yay -Y --gendb

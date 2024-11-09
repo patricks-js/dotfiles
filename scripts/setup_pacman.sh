@@ -4,13 +4,13 @@ if [ -d ~/.config ]; then
 	echo -e "\033[0;33m[SKIP]\033[0m $HOME/.config folder already exists."
 else
 	mkdir -p ~/.config
-	echo -e "\033[0;32m[BOOTLOADER]\033[0m $HOME/.config folder created."
+	echo -e "\033[0;32m[DONE]\033[0m $HOME/.config folder created."
 fi
 
-if [ -f /etc/pacman.conf ] && [ ! -f /etc/pacman.conf.t2.bkp ]; then
+if [ -f /etc/pacman.conf ] && [ ! -f /etc/pacman.conf.bkp ]; then
 	echo -e "\033[0;32m[PACMAN]\033[0m adding extra spice to pacman..."
 
-	sudo cp /etc/pacman.conf /etc/pacman.conf.t2.bkp
+	sudo cp /etc/pacman.conf /etc/pacman.conf.bkp
 	sudo sed -i "/^#Color/c\Color\nILoveCandy
     /^#VerbosePkgLists/c\VerbosePkgLists
     /^#ParallelDownloads/c\ParallelDownloads = 10" /etc/pacman.conf

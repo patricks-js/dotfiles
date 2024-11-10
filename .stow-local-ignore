@@ -22,5 +22,4 @@ _darcs
 ^/LICENSE.*
 ^/COPYING
 
-\.install
-install.sh
+./scripts

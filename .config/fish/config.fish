@@ -32,3 +32,8 @@ set -Ux EDITOR nvim
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+# Android emulator
+set --export ANDROID_HOME "$HOME/Android/Sdk"
+set --export PATH "$PATH:$ANDROID_HOME/emulator"
+set --export PATH "$PATH:$ANDROID_HOME/platform-tools"

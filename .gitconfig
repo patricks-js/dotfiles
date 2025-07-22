@@ -20,6 +20,7 @@
 	rls = remote -v
 	pr = pull --rebase
 	ps = push
+	psm = !git ps origin main
 	undo = checkout .
 	rollback = reset --soft HEAD~1 # Undo last commit
 	ck = checkout

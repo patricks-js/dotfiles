@@ -6,6 +6,11 @@ if status is-interactive
     zoxide init fish | source
 end
 
+# fzf
+if type -q fzf
+    fzf --fish | source
+end
+
 # List Directory
 alias ls="lsd"
 alias l="ls -l"

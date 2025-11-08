@@ -12,7 +12,7 @@ wlogout
 grimblast-git
 swappy
 cliphist
-dunst
+mako
 wofi
 waybar
 qt5-wayland

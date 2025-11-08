@@ -4,7 +4,6 @@ pipewire-pulse
 gst-plugin-pipewire
 wireplumber
 openvpn
-pamixer
 bluez
 bluez-utils
 bluetui

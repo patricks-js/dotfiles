@@ -1,11 +1,9 @@
 pipewire
 pipewire-alsa
-pipewire-audio
-pipewire-jack
 pipewire-pulse
 gst-plugin-pipewire
 wireplumber
-pavucontrol
+openvpn
 pamixer
 bluez
 bluez-utils
@@ -13,6 +11,9 @@ bluetui
 sddm
 openssh
 ufw
+cups
+pacseek
+pacman-contrib
 udiskie
 brightnessctl
 neovim

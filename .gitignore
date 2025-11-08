@@ -1,5 +1,4 @@
 SHELL.md
-.vscode
 
 .config/fish/completions
 .config/fish/conf.d
@@ -7,8 +6,6 @@ SHELL.md
 .config/fish/themes
 .config/fish/fish_*
 .config/cava/shaders
-.config/tmux/plugins
-.editorconfig
 
 *~
 .emacs.d/session.*

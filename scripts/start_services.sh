@@ -1,52 +1,59 @@
 #!/usr/bin/env bash
 
-# Check for running NetworkManager.service
-if [[ $(systemctl list-units --all -t service --full --no-legend "NetworkManager.service" | sed 's/^\s*//g' | cut -f1 -d' ') == "NetworkManager.service" ]];then
-    echo ":: NetworkManager.service already running."
-else
-    sudo systemctl enable NetworkManager.service
-    sudo systemctl start NetworkManager.service
-    echo ":: NetworkManager.service activated successfully."    
-fi
+set -euo pipefail
 
-# Check for running bluetooth.service
-if [[ $(systemctl list-units --all -t service --full --no-legend "bluetooth.service" | sed 's/^\s*//g' | cut -f1 -d' ') == "bluetooth.service" ]];then
-    echo ":: bluetooth.service already running."
-else
-    sudo systemctl enable bluetooth.service
-    sudo systemctl start bluetooth.service
-    echo ":: bluetooth.service activated successfully."    
-fi
+echo ":: Starting essential services..."
 
-# Check for running ufw.service
-if [[ $(systemctl list-units --all -t service --full --no-legend "ufw.service" | sed 's/^\s*//g' | cut -f1 -d' ') == "ufw.service" ]];then
-    echo ":: ufw.service already running."
-else
-    sudo systemctl enable ufw.service
-    sudo systemctl start ufw.service
-    echo ":: ufw.service activated successfully."    
-fi
+# -----------------------------
+# System services
+# -----------------------------
+SYSTEM_SERVICES=(
+  iwd
+  bluetooth
+  ufw
+  sshd
+  sddm
+)
 
-# Check for running sshd.service
-if [[ $(systemctl list-units --all -t service --full --no-legend "sshd.service" | sed 's/^\s*//g' | cut -f1 -d' ') == "sshd.service" ]];then
-    echo ":: sshd.service already running."
-else
-    sudo systemctl enable sshd.service
-    sudo systemctl start sshd.service
-    echo ":: sshd.service activated successfully."    
-fi
+for svc in "${SYSTEM_SERVICES[@]}"; do
+  if systemctl --no-pager --quiet is-active "${svc}.service"; then
+    echo ":: ${svc}.service already running."
+  else
+    echo ":: Activating ${svc}.service..."
+    sudo systemctl --no-pager --quiet enable --now "${svc}.service" || {
+      echo "!! Failed to start ${svc}.service. Check logs below:"
+      sudo journalctl -u "${svc}.service" -b --no-pager -n 15
+    }
+    echo ":: ${svc}.service activated successfully."
+  fi
+done
 
-# Check for running sddm.service
-if [[ $(systemctl list-units --all -t service --full --no-legend "sddm.service" | sed 's/^\s*//g' | cut -f1 -d' ') == "sddm.service" ]];then
-    echo ":: sddm.service already running."
-else
-    sudo systemctl enable sddm.service
-    sudo systemctl start sddm.service
-    echo ":: sddm.service activated successfully."    
-fi
+# -----------------------------
+# User services
+# -----------------------------
+USER_SERVICES=(
+  pipewire
+  pipewire-pulse
+  wireplumber
+)
 
-# Create default folder structure
+for svc in "${USER_SERVICES[@]}"; do
+  if systemctl --user --no-pager --quiet is-active "${svc}.service"; then
+    echo ":: ${svc}.service already running."
+  else
+    echo ":: Activating ${svc}.service (user)..."
+    systemctl --user --no-pager --quiet enable --now "${svc}.service" || {
+      echo "!! Failed to start ${svc}.service (user). Check logs below:"
+      journalctl --user -u "${svc}.service" -b --no-pager -n 15
+    }
+    echo ":: ${svc}.service activated successfully (user)."
+  fi
+done
+
+# -----------------------------
+# Misc setup
+# -----------------------------
 xdg-user-dirs-update
-echo 
+echo ":: XDG directories ensured."
 
-echo ":: Services started successfully."
+echo -e "\n:: All essential services are up and running."

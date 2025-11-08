@@ -42,3 +42,16 @@ set --export PATH $BUN_INSTALL/bin $PATH
 set --export ANDROID_HOME "$HOME/Android/Sdk"
 set --export PATH "$PATH:$ANDROID_HOME/emulator"
 set --export PATH "$PATH:$ANDROID_HOME/platform-tools"
+
+# Java
+set --export JAVA_HOME "/usr/lib/jvm/java-24-openjdk"
+set --export PATH "$PATH:$JAVA_HOME/bin"
+
+# .NET Core SDK tools
+set --export PATH "$PATH:$HOME/.dotnet/tools"
+
+# Flutter
+set --export CHROME_EXECUTABLE "/usr/bin/google-chrome-stable"
+set --export PATH "$PATH:$HOME/flutter/bin"
+
+set -x N_PREFIX "$HOME/n"; contains "$N_PREFIX/bin" $PATH; or set -a PATH "$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).

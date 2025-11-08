@@ -22,4 +22,6 @@ _darcs
 ^/LICENSE.*
 ^/COPYING
 
-./scripts
+\scripts
+\packages.md
+\wallpapers

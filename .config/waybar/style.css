@@ -1,45 +1,31 @@
 * {
-  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-family: JetBrainsMono Nerd Font, monospace;
   font-size: 13px;
-  border: none;
-  min-height: 0;
 }
 
 window#waybar {
-  background: rgba(30, 30, 46, 0.6); /* transparente */
-  backdrop-filter: blur(8px);
+  background: #1e1e2e;
   color: #cdd6f4;
-  border-bottom: 1px solid rgba(80, 80, 100, 0.3);
-  padding: 0 10px;
-}
-
-#workspaces {
-  margin: 0 10px;
+  border-bottom: 2px solid #11111b;
 }
 
 #workspaces button {
   padding: 0 8px;
-  margin: 0 2px;
   background: transparent;
   color: #a6adc8;
-  border-radius: 6px;
-  transition: background 0.2s ease;
 }
 
 #workspaces button.active {
-  background: rgba(203, 166, 247, 0.15);
   color: #cba6f7;
-}
-
-#workspaces button:hover {
-  background: rgba(203, 166, 247, 0.1);
+  border-bottom: 2px solid #cba6f7;
 }
 
 #custom-menu,
-#custom-bluetooth,
-#custom-network,
-#custom-vpn,
-#custom-logout,
+#custom-connections,
+#custom-logout {
+  padding: 0 10px;
+}
+
 #cpu,
 #memory,
 #battery,
@@ -47,14 +33,11 @@ window#waybar {
 #pulseaudio,
 #tray {
   padding: 0 10px;
-  margin: 0 4px;
 }
 
+#custom-connections:hover,
 #custom-menu:hover,
-#custom-logout:hover,
-#custom-bluetooth:hover,
-#custom-network:hover,
-#custom-vpn:hover {
-  background: rgba(49, 50, 68, 0.6);
-  border-radius: 8px;
+#custom-logout:hover {
+  background: #313244;
+  border-radius: 6px;
 }

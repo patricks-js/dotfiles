@@ -5,15 +5,14 @@ hypridle
 hyprsunset
 hyprpolkitagent
 xdg-desktop-portal-hyprland
-xdg-desktop-portal-gtk
 waypaper
 nwg-look
 wlogout
+walker-bin
 grimblast-git
 swappy
 cliphist
 mako
-wofi
 waybar
 qt5-wayland
 qt6-wayland

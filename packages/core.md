@@ -23,8 +23,6 @@ neovim
 stow
 man
 mpv
-nautilus
-mousepad
 libnotify
 papirus-icon-theme
 noto-fonts

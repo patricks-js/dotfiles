@@ -11,11 +11,9 @@ sddm
 openssh
 ufw
 cups
-pacseek
 pacman-contrib
 udiskie
 brightnessctl
-neovim
 wget
 unzip
 zip
@@ -31,7 +29,6 @@ libnotify
 papirus-icon-theme
 noto-fonts
 noto-fonts-cjk
-ttf-joypixels
 otf-font-awesome
 ttf-font-awesome
 ttf-jetbrains-mono-nerd
@@ -42,6 +39,7 @@ intel-media-driver
 vulkan-intel
 libadwaita
 imagemagick
+flatpak
 jq
 parallel
 xdg-desktop-portal

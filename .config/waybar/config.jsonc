@@ -1,0 +1,113 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "spacing": 8,
+
+  "modules-left": [
+    "custom/menu",
+    "hyprland/workspaces"
+  ],
+
+  "modules-center": [
+    "hyprland/window"
+  ],
+
+  "modules-right": [
+    "cpu",
+    "memory",
+    "custom/bluetooth",
+    "custom/network",
+    "custom/vpn",
+    "battery",
+    "clock",
+    "pulseaudio",
+    "tray",
+    "custom/logout"
+  ],
+
+  // --- Custom modules ---
+  "custom/menu": {
+    "format": "󰍜",
+    "tooltip": false,
+    "on-click": "walker",
+    "class": "menu"
+  },
+
+  "custom/bluetooth": {
+    "format": "",
+    "tooltip": "Bluetooth",
+    "on-click": "kitty -e bluetui",
+    "exec": "bluetoothctl show | grep -q 'Powered: yes' && echo '' || echo '󰂲'",
+    "interval": 10
+  },
+
+  "custom/network": {
+    "format": "󰤨",
+    "tooltip": "Network Manager",
+    "on-click": "kitty -e impala",
+    "exec": "nmcli -t -f DEVICE,STATE dev | grep ':connected' >/dev/null && echo '󰤨' || echo '󰤭'",
+    "interval": 10
+  },
+
+  "custom/vpn": {
+    "format": "󰖂",
+    "tooltip": "VPN status",
+    "on-click": "kitty -e sudo openvpn sessions-list",
+    "exec": "nmcli con show --active | grep -qi vpn && echo '󰖂' || echo '󰖁'",
+    "interval": 10
+  },
+
+  "custom/logout": {
+    "format": "",
+    "tooltip": "Logout menu",
+    "on-click": "wlogout"
+  },
+
+  "cpu": {
+    "format": " {usage}%",
+    "interval": 3
+  },
+  "memory": {
+    "format": " {used}G",
+    "interval": 5
+  },
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
+    "interval": 10
+  },
+  "clock": {
+    "format": "󰥔 {:%H:%M}",
+    "tooltip-format": "{:%A, %d %B %Y}",
+    "on-click": "gsimplecal"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "on-click": "pavucontrol"
+  },
+  "tray": {
+    "icon-size": 16
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": ""
+    },
+    "disable-scroll": true,
+    "on-click": "activate",
+    "active-only": false,
+    "all-outputs": true,
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4, 5]
+    }
+  }
+}

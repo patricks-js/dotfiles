@@ -36,6 +36,7 @@ libva-intel-driver
 intel-media-driver
 vulkan-intel
 libadwaita
+dolphin
 imagemagick
 flatpak
 jq

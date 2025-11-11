@@ -1,0 +1,15 @@
+{
+  "clock": {
+    "format": "{:%H:%M | %e %B} ",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%Y-%m-%d}"
+  },
+  "custom/updates": {
+    "exec": "~/.local/bin/check-updates.sh",
+    "interval": 3600,
+    "return-type": "json",
+    "format": "{icon} {count}",
+    "on-click": "kitty -e yay",
+    "tooltip": "Available updates"
+  }
+}

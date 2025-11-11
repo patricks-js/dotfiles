@@ -1,0 +1,103 @@
+{
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 6
+  },
+  "custom/vpn": {
+    "exec": "~/.local/bin/vpn-status.sh",
+    "interval": 10,
+    "return-type": "json",
+    "format": "{icon}",
+    "tooltip": "{tooltip}",
+    "on-click": "nm-connection-editor"
+  },
+  "custom/playerctl": {
+    "exec": "playerctl metadata --format '{artist} - {title}' 2>/dev/null || echo ''",
+    "interval": 5,
+    "return-type": "text",
+    "format": "  {}",
+    "max-length": 30,
+    "tooltip": false
+  },
+  "group/network": {
+    "orientation": "horizontal",
+    "modules": [
+      "network",
+      "bluetooth",
+      "pulseaudio"
+    ]
+  },
+  "network": {
+    "format-wifi": "  {essid}",
+    "format-ethernet": "󰈁",
+    "format-disconnected": "󰤮",
+    "tooltip-format": "{ipaddr}",
+    "on-click": "kitty -T impala -e impala"
+  },
+  "bluetooth": {
+    "format": "",
+    "format-connected": " {device_alias}",
+    "on-click": "kitty -T bluetui -e bluetui"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰖁  Mute",
+    "format-icons": {
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
+    },
+    "on-click": "kitty -T wiremix -e wiremix"
+  },
+  "group/performance": {
+    "orientation": "horizontal",
+    "modules": [
+      "temperature",
+      "cpu",
+      "memory"
+    ]
+  },
+  "temperature": {
+    "interval": 10,
+    "format": " {temperatureC}°C",
+    "tooltip": false
+  },
+  "cpu": {
+    "format": " {usage}%",
+    "tooltip": false
+  },
+  "memory": {
+    "format": " {used:0.0f}G",
+    "tooltip": false
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-full": "{icon}  {capacity}%",
+    "format-charging": "  {capacity}%",
+    "format-icons": [
+      "󰁺",
+      "󰁼",
+      "󰂁",
+      "󰁹"
+    ],
+    "tooltip-format": "{timeTo}"
+  },
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": "Logout / Power menu",
+    "on-click": "wlogout"
+  }
+}

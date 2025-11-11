@@ -1,28 +1,30 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 26,
-  "spacing": 4,
+  "height": 32,
   "modules-left": [
     "custom/arch",
-    "hyprland/workspaces"
+    "hyprland/workspaces",
+    "hyprland/window"
   ],
   "modules-center": [
-    "hyprland/window"
+    "clock",
+    "custom/updates"
   ],
   "modules-right": [
     "idle_inhibitor",
-    "pulseaudio",
-    "network",
-    "cpu",
-    "memory",
-    "temperature",
-    "hyprland/language",
+    "tray",
+    "custom/vpn",
+    "custom/playerctl",
+    "group/network",
+    "group/performance",
     "battery",
-    "battery#bat2",
-    "clock"
+    "custom/power"
   ],
   "include": [
-    "~/.config/waybar/modules.json"
-  ]
+    "~/.config/waybar/modules/left.json",
+    "~/.config/waybar/modules/center.json",
+    "~/.config/waybar/modules/right.json"
+  ],
+  "reload_style_on_change": true
 }

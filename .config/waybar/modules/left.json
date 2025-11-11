@@ -1,0 +1,28 @@
+{
+  "custom/arch": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "walker",
+    "class": "arch-icon",
+    "tooltip-format": "btw"
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "disable-scroll": true,
+    "all-outputs": false,
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": ""
+    },
+    "persistent-workspaces": {
+      "*": 5
+    }
+  },
+  "hyprland/window": {
+    "max-length": 40,
+    "format": "{}",
+    "empty-format": "",
+    "tooltip": false
+  }
+}

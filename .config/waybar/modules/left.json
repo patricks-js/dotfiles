@@ -1,6 +1,6 @@
 {
   "custom/arch": {
-    "format": "",
+    "format": " ",
     "tooltip": false,
     "on-click": "walker",
     "class": "arch-icon",
@@ -10,10 +10,19 @@
     "format": "{icon}",
     "disable-scroll": true,
     "all-outputs": false,
+    "on-click": "activate",
     "format-icons": {
-      "urgent": "",
-      "active": "",
-      "default": ""
+      "default": "",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "active": "󱓻"
     },
     "persistent-workspaces": {
       "*": 5

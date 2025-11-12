@@ -2,6 +2,12 @@
   "layer": "top",
   "position": "top",
   "height": 32,
+  "reload_style_on_change": true,
+  "include": [
+    "~/.config/waybar/modules/left.json",
+    "~/.config/waybar/modules/center.json",
+    "~/.config/waybar/modules/right.json"
+  ],
   "modules-left": [
     "custom/arch",
     "hyprland/workspaces",
@@ -16,15 +22,13 @@
     "tray",
     "custom/vpn",
     "custom/playerctl",
-    "group/network",
-    "group/performance",
+    "network",
+    "bluetooth",
+    "pulseaudio",
+    "temperature",
+    "cpu",
+    "memory",
     "battery",
     "custom/power"
-  ],
-  "include": [
-    "~/.config/waybar/modules/left.json",
-    "~/.config/waybar/modules/center.json",
-    "~/.config/waybar/modules/right.json"
-  ],
-  "reload_style_on_change": true
+  ]
 }

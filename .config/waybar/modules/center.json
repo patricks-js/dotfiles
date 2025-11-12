@@ -6,10 +6,10 @@
   },
   "custom/updates": {
     "exec": "~/.local/bin/check-updates.sh",
-    "interval": 3600,
-    "return-type": "json",
-    "format": "{icon} {count}",
-    "on-click": "kitty -e yay",
+    "interval": 21600,
+    "format": "",
+    "signal": 7,
+    "on-click": "kitty -T Updates -e yay",
     "tooltip": "Available updates"
   }
 }

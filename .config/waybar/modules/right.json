@@ -2,13 +2,13 @@
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
-      "activated": "",
-      "deactivated": ""
+      "activated": " ",
+      "deactivated": " "
     }
   },
   "tray": {
-    "icon-size": 16,
-    "spacing": 6
+    "icon-size": 12,
+    "spacing": 8
   },
   "custom/vpn": {
     "exec": "~/.local/bin/vpn-status.sh",
@@ -26,24 +26,30 @@
     "max-length": 30,
     "tooltip": false
   },
-  "group/network": {
-    "orientation": "horizontal",
-    "modules": [
-      "network",
-      "bluetooth",
-      "pulseaudio"
-    ]
-  },
   "network": {
-    "format-wifi": "  {essid}",
-    "format-ethernet": "󰈁",
+    "format-icons": [
+      "󰤯 ",
+      "󰤟 ",
+      "󰤢 ",
+      "󰤥 ",
+      "󰤨 "
+    ],
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰀂",
     "format-disconnected": "󰤮",
-    "tooltip-format": "{ipaddr}",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 3,
+    "spacing": 1,
     "on-click": "kitty -T impala -e impala"
   },
   "bluetooth": {
     "format": "",
-    "format-connected": " {device_alias}",
+    "format-disabled": "󰂲",
+    "format-connected": "",
+    "tooltip-format": "Devices connected: {num_connections}",
     "on-click": "kitty -T bluetui -e bluetui"
   },
   "pulseaudio": {
@@ -57,14 +63,6 @@
       ]
     },
     "on-click": "kitty -T wiremix -e wiremix"
-  },
-  "group/performance": {
-    "orientation": "horizontal",
-    "modules": [
-      "temperature",
-      "cpu",
-      "memory"
-    ]
   },
   "temperature": {
     "interval": 10,
@@ -86,7 +84,7 @@
     },
     "format": "{icon} {capacity}%",
     "format-full": "{icon}  {capacity}%",
-    "format-charging": "  {capacity}%",
+    "format-charging": " {capacity}%",
     "format-icons": [
       "󰁺",
       "󰁼",

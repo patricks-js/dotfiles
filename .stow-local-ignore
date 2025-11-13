@@ -25,3 +25,8 @@ _darcs
 /scripts
 /packages
 /wallpapers
+/.config/hypr
+/.config/waybar
+/.config/walker
+/.config/xdg-desktop-portal
+/.local

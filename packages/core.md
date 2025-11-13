@@ -7,6 +7,7 @@ openvpn
 bluez
 bluez-utils
 bluetui
+playerctl
 sddm
 openssh
 ufw

@@ -6,7 +6,7 @@ wireplumber
 openvpn
 bluez
 bluez-utils
-bluetui
+bluetuith
 playerctl
 sddm
 openssh

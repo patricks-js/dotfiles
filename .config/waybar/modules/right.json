@@ -50,7 +50,7 @@
     "format-disabled": "󰂲",
     "format-connected": "",
     "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "~/.local/bin/floating-term.sh bluetui"
+    "on-click": "~/.local/bin/floating-term.sh bluetuith"
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",

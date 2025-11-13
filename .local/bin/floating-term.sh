@@ -7,4 +7,4 @@ if [ -z "$app" ]; then
   exit 1
 fi
 
-kitty --class "float-term" -e bash -c "$app; sleep 0.2"
+kitty --class "float-term" -e bash -c "$app"

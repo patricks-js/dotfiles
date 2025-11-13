@@ -27,3 +27,7 @@ bat
 btop
 zellij
 bibata-cursor-theme-bin
+visual-studio-code-bin
+steam
+gamemode
+downgrade

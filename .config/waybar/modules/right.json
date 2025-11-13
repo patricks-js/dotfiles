@@ -96,6 +96,6 @@
   "custom/power": {
     "format": "⏻",
     "tooltip": "Logout / Power menu",
-    "on-click": "walker --provider=menus.power"
+    "on-click": "~/.local/bin/power-menu.sh"
   }
 }

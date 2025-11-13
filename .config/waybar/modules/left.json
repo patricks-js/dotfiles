@@ -2,7 +2,7 @@
   "custom/arch": {
     "format": " ",
     "tooltip": false,
-    "on-click": "walker",
+    "on-click": "rofi -show drun",
     "class": "arch-icon",
     "tooltip-format": "btw"
   },

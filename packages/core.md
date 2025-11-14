@@ -79,3 +79,4 @@ plymouth
 xdg-desktop-portal-gtk
 obsidian
 obs-studio
+ttf-cascadia-mono-nerd

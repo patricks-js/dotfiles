@@ -1,7 +1,0 @@
-[menus.power]
-title = "Power"
-items = [
-  { label = "Shutdown", command = "systemctl poweroff" },
-  { label = "Suspend", command = "systemctl suspend" },
-  { label = "Logout", command = "hyprctl dispatch exit" }
-]

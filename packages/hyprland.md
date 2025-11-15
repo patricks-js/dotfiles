@@ -5,13 +5,10 @@ hypridle
 hyprsunset
 hyprpolkitagent
 xdg-desktop-portal-hyprland
-waypaper
 nwg-look
-wlogout
 walker-bin
 grimblast-git
-swappy
-cliphist
+satty
 mako
 waybar
 qt5-wayland
@@ -31,3 +28,6 @@ visual-studio-code-bin
 steam
 gamemode
 downgrade
+obs-studio
+imv
+obsidian

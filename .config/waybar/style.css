@@ -52,7 +52,6 @@
 #idle_inhibitor,
 #tray,
 #custom-vpn,
-#custom-playerctl,
 #battery,
 #cpu,
 #memory,
@@ -64,6 +63,5 @@
 }
 
 #custom-power {
-  color: #bf616a;
   margin: 0 4px;
 }

@@ -27,11 +27,5 @@
     "persistent-workspaces": {
       "*": 5
     }
-  },
-  "hyprland/window": {
-    "max-length": 40,
-    "format": "{}",
-    "empty-format": "",
-    "tooltip": false
   }
 }

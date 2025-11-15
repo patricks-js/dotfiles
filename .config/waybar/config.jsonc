@@ -10,8 +10,7 @@
   ],
   "modules-left": [
     "custom/arch",
-    "hyprland/workspaces",
-    "hyprland/window"
+    "hyprland/workspaces"
   ],
   "modules-center": [
     "clock",
@@ -21,7 +20,6 @@
     "idle_inhibitor",
     "tray",
     "custom/vpn",
-    "custom/playerctl",
     "network",
     "bluetooth",
     "pulseaudio",

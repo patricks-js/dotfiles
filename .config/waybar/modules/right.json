@@ -18,14 +18,6 @@
     "tooltip": "{tooltip}",
     "on-click": "nm-connection-editor"
   },
-  "custom/playerctl": {
-    "exec": "playerctl metadata --format '{artist} - {title}' 2>/dev/null || echo ''",
-    "interval": 5,
-    "return-type": "text",
-    "format": "  {}",
-    "max-length": 30,
-    "tooltip": false
-  },
   "network": {
     "format-icons": [
       "󰤯 ",
@@ -96,6 +88,6 @@
   "custom/power": {
     "format": "⏻",
     "tooltip": "Logout / Power menu",
-    "on-click": "~/.local/bin/power-menu.sh"
+    "on-click": "wlogout"
   }
 }

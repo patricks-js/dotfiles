@@ -13,6 +13,8 @@ SYSTEM_SERVICES=(
   ufw
   sshd
   sddm
+  docker
+  containerd
 )
 
 for svc in "${SYSTEM_SERVICES[@]}"; do

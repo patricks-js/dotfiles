@@ -1,144 +1,107 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
-    "type": "file",
-    "source": "~/.config/omarchy/branding/about.txt",
-    "color": { "1": "green" },
+    // "type": "none",
+    "source": "~/dotfiles/.config/fastfetch/logo.png",
+    // "type": "file",
+    "height": 18,
     "padding": {
-      "top": 2,
-      "right": 6,
-      "left": 2
+      "top": 0,
+      "right": 0,
+      "left": 0
     }
   },
+  "display": {
+    "separator": " "
+  },
   "modules": [
-    "break",
     {
-      "type": "custom",
-      "format": "\u001b[90m┌──────────────────────Hardware──────────────────────┐"
+      "key": "╭───────────╮",
+      "type": "custom"
     },
     {
-      "type": "host",
-      "key": " PC",
-      "keyColor": "green"
+      "key": "│ {#31} user    {#keys}│",
+      "type": "title",
+      "format": "{user-name}"
+    },
+    // {
+    //   "key": "│ {#32}󰇅 hname   {#keys}│",
+    //   "type": "title",
+    //   "format": "{host-name}"
+    // },
+    {
+      "key": "│ {#33}󰅐 uptime  {#keys}│",
+      "type": "uptime"
     },
     {
-      "type": "cpu",
-      "key": "│ ├",
-      "showPeCoreCount": true,
-      "keyColor": "green"
+      "key": "│ {#34}{icon} distro  {#keys}│",
+      "type": "os"
     },
     {
-      "type": "gpu",
-      "key": "│ ├",
-      "detectionMethod": "pci",
-      "keyColor": "green"
+      "key": "│ {#35} kernel  {#keys}│",
+      "type": "kernel"
     },
     {
-      "type": "display",
-      "key": "│ ├󱄄",
-      "keyColor": "green"
+      "key": "│ {#36} wm      {#keys}│",
+      "type": "wm"
     },
     {
-      "type": "disk",
-      "key": "│ ├󰋊",
-      "keyColor": "green"
+      "key": "│ {#36}󰇄 desktop {#keys}│",
+      "type": "de"
     },
     {
-      "type": "memory",
-      "key": "│ ├",
-      "keyColor": "green"
+      "key": "│ {#31} term    {#keys}│",
+      "type": "terminal"
     },
     {
-      "type": "swap",
-      "key": "└ └󰓡 ",
-      "keyColor": "green"
-    },
-    {
-      "type": "custom",
-      "format": "\u001b[90m└────────────────────────────────────────────────────┘"
-    },
-    "break",
-    {
-      "type": "custom",
-      "format": "\u001b[90m┌──────────────────────Software──────────────────────┐"
-    },
-    {
-      "type": "command",
-      "key": "\ue900 OS",
-      "keyColor": "blue",
-      "text": "Arch Linux"
-    },
-    {
-      "type": "command",
-      "key": "│ ├󰘬",
-      "keyColor": "blue",
-      "text": "branch=$(omarchy-version-branch); echo \"$branch\""
-    },
-    {
-      "type": "kernel",
-      "key": "│ ├",
-      "keyColor": "blue"
-    },
-    {
-      "type": "wm",
-      "key": "│ ├",
-      "keyColor": "blue"
-    },
-    {
-      "type": "de",
-      "key": " DE",
-      "keyColor": "blue"
-    },
-    {
-      "type": "terminal",
-      "key": "│ ├",
-      "keyColor": "blue"
+      "key": "│ {#32} shell   {#keys}│",
+      "type": "shell"
     },
     {
       "type": "packages",
-      "key": "│ ├󰏖",
-      "keyColor": "blue"
+      "key": "│ {#33}󰏖 apps    {#keys}│"
     },
     {
-      "type": "wmtheme",
-      "key": "│ ├󰉼",
-      "keyColor": "blue"
+      "key": "│ {#33}󰍛 cpu     {#keys}│",
+      "type": "cpu",
+      "showPeCoreCount": true
+    },
+     {
+      "type": "gpu",
+      "key": "│ {#35}󰉉 gpu     {#keys}│",
+      "detectionMethod": "pci"
     },
     {
-      "type": "command",
-      "key": "│ ├󰸌",
-      "keyColor": "blue",
-      "text": "theme=$(omarchy-theme-current); echo -e \"$theme \\e[38m●\\e[37m●\\e[36m●\\e[35m●\\e[34m●\\e[33m●\\e[32m●\\e[31m●\""
+      "key": "│ {#34}󰉉 disk    {#keys}│",
+      "type": "disk",
+      "folders": "/"
+    },
+    {
+      "key": "│ {#36} memory  {#keys}│",
+      "type": "memory"
     },
     {
       "type": "terminalfont",
-      "key": "└ └",
-      "keyColor": "blue"
+      "key": "│ {#35} font    {#keys}│",
+      "keyColor": "green"
+    },
+    // {
+    //   "type": "command",
+    //   "key": "│ {#33}󱦟 OS Age  {#keys}│ ",
+    //   "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+    // },
+    {
+      "key": "├───────────┤",
+      "type": "custom"
     },
     {
-      "type": "custom",
-      "format": "\u001b[90m└────────────────────────────────────────────────────┘"
-    },
-    "break",
-    {
-      "type": "custom",
-      "format": "\u001b[90m┌────────────────────Uptime / Age────────────────────┐"
+      "key": "│ {#39} colors  {#keys}│",
+      "type": "colors",
+      "symbol": "circle"
     },
     {
-      "type": "command",
-      "key": "󱦟 OS Age",
-      "keyColor": "magenta",
-      "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
-    },
-    {
-      "type": "uptime",
-      "key": "󱫐 Uptime",
-      "keyColor": "magenta"
-    },
-    {
-      "type": "custom",
-      "format": "\u001b[90m└────────────────────────────────────────────────────┘"
-    },
-    "break"
+      "key": "╰───────────╯",
+      "type": "custom"
+    }
   ]
 }

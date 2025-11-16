@@ -22,12 +22,6 @@ _darcs
 ^/LICENSE.*
 ^/COPYING
 
-/scripts
-/packages
-/assets
-/wallpapers
-/.config/hypr
-/.config/waybar
-/.config/walker
-/.config/xdg-desktop-portal
-/.local
+scripts
+packages
+assets

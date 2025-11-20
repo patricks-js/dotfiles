@@ -1,0 +1,67 @@
+/* General styles */
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 12px;
+  background: rgba(28, 28, 30, 0.75);
+  color: #eceff4;
+  min-height: 0;
+  border: none;
+  border-radius: 0;
+}
+
+.modules-left {
+  margin-left: 12px;
+}
+
+.modules-right {
+  margin-right: 12px;
+}
+
+/* Modules left styles */
+#custom-arch {
+  min-width: 12px;
+  margin-right: 8px;
+}
+
+#workspaces button {
+  all: initial;
+  padding: 0 6px;
+  margin: 0 1.5px;
+  min-width: 10px;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+}
+
+#window {
+  color: #d8dee9;
+  margin-left: 8px;
+}
+
+/* Modules center styles */
+#clock {
+  color: #e5e9f0;
+  padding: 0 8px;
+}
+
+#custom-updates {
+  font-size: 12px;
+}
+
+#idle_inhibitor,
+#tray,
+#custom-vpn,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#network,
+#bluetooth,
+#pulseaudio {
+  margin: 0 8px;
+}
+
+#custom-power {
+  margin: 0 4px;
+}

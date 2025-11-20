@@ -1,67 +1,134 @@
-/* General styles */
+/* Import Matugen colors */
+@import "colors.css";
+
 * {
-  font-family: "JetBrainsMono Nerd Font", monospace;
-  font-size: 12px;
-  background: rgba(28, 28, 30, 0.75);
-  color: #eceff4;
-  min-height: 0;
-  border: none;
-  border-radius: 0;
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
+    min-height: 0;
 }
 
-.modules-left {
-  margin-left: 12px;
+window#waybar {
+    background-color: @background;
+    color: @foreground;
+    transition-property: background-color;
+    transition-duration: .5s;
 }
 
-.modules-right {
-  margin-right: 12px;
-}
-
-/* Modules left styles */
-#custom-arch {
-  min-width: 12px;
-  margin-right: 8px;
+window#waybar.hidden {
+    opacity: 0.2;
 }
 
 #workspaces button {
-  all: initial;
-  padding: 0 6px;
-  margin: 0 1.5px;
-  min-width: 10px;
+    padding: 0 5px;
+    background-color: transparent;
+    color: @foreground;
 }
 
-#workspaces button.empty {
-  opacity: 0.5;
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: inherit;
+    text-shadow: inherit;
 }
 
-#window {
-  color: #d8dee9;
-  margin-left: 8px;
+#workspaces button.active {
+    background-color: @primary;
+    color: @background;
+    border-radius: 10px;
 }
 
-/* Modules center styles */
-#clock {
-  color: #e5e9f0;
-  padding: 0 8px;
+#workspaces button.urgent {
+    background-color: @alert;
 }
 
-#custom-updates {
-  font-size: 12px;
-}
-
-#idle_inhibitor,
-#tray,
-#custom-vpn,
+#clock,
 #battery,
 #cpu,
 #memory,
+#disk,
 #temperature,
+#backlight,
 #network,
-#bluetooth,
-#pulseaudio {
-  margin: 0 8px;
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd {
+    padding: 0 10px;
+    color: @foreground;
+    background-color: @secondary;
+    border-radius: 10px;
+    margin: 4px 2px;
 }
 
-#custom-power {
-  margin: 0 4px;
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#clock {
+    background-color: @primary;
+    color: @background;
+}
+
+#battery {
+    background-color: @primary;
+    color: @background;
+}
+
+#battery.charging, #battery.plugged {
+    color: @background;
+    background-color: @secondary;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: @alert;
+    color: @background;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#custom-launcher {
+    background-color: @primary;
+    color: @background;
+    padding: 0 15px;
+    margin: 4px 4px 4px 4px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+#custom-wlogout {
+    background-color: @alert;
+    color: @background;
+    padding: 0 10px;
+    margin: 4px 4px 4px 2px;
+    border-radius: 10px;
 }

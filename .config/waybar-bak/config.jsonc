@@ -1,0 +1,32 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "reload_style_on_change": true,
+  "include": [
+    "~/.config/waybar/modules/left.json",
+    "~/.config/waybar/modules/center.json",
+    "~/.config/waybar/modules/right.json"
+  ],
+  "modules-left": [
+    "custom/arch",
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "clock",
+    "custom/updates"
+  ],
+  "modules-right": [
+    "idle_inhibitor",
+    "tray",
+    "custom/vpn",
+    "network",
+    "bluetooth",
+    "pulseaudio",
+    "temperature",
+    "cpu",
+    "memory",
+    "battery",
+    "custom/power"
+  ]
+}

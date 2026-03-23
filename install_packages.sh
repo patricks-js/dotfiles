@@ -65,7 +65,6 @@ pkgs_tools=(
 )
 
 pkgs_fonts=(
-  noto-fonts
   ttf-cascadia-code-nerd
   ttf-cascadia-mono-nerd
   ttf-jetbrains-mono-nerd

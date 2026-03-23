@@ -1,11 +1,8 @@
-SHELL.md
-
 .config/fish/completions
 .config/fish/conf.d
 .config/fish/functions
 .config/fish/themes
 .config/fish/fish_*
-.config/cava/shaders
 
 *~
 .emacs.d/session.*

@@ -11,9 +11,6 @@ pkgs_core=(
   hyprpolkitagent
   xdg-desktop-portal-hyprland
   xdg-desktop-portal-gtk
-  fish
-  bluez
-  bluez-utils
   kitty
   wl-clipboard
   qt5-wayland
@@ -51,7 +48,6 @@ pkgs_tools=(
   uwsm
   tar
   openvpn
-  networkmanager-openvpn
   ufw
   pacman-contrib
   unzip
@@ -61,12 +57,10 @@ pkgs_tools=(
   jq
   lsd
   starship
-  fastfetch
   cliphist
   fzf
   zoxide
   bat
-  btop
   zellij
 )
 

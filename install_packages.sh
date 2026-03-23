@@ -83,7 +83,7 @@ install_list() {
   local label="$1"
   shift
   echo -e "\n:: Instalando $label..."
-  yay -S --needed --noconfirm "$@" || echo "!! Alguns pacotes de '$label' falharam"
+  paru -S --needed --noconfirm "$@" || echo "!! Alguns pacotes de '$label' falharam"
 }
 
 install_curl() {

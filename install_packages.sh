@@ -20,6 +20,7 @@ pkgs_core=(
   udiskie
   brightnessctl
   xdg-desktop-portal
+  waybar
   quickshell
   sddm
 )
@@ -85,6 +86,13 @@ install_list() {
   yay -S --needed --noconfirm "$@" || echo "!! Alguns pacotes de '$label' falharam"
 }
 
+install_curl() {
+  local label="$1"
+  local cmd="$2"
+  echo -e "\n:: Instalando $label..."
+  bash -c "$cmd" || echo "!! Falha ao instalar $label"
+}
+
 echo ":: Iniciando instalação de pacotes..."
 
 install_list "Core"      "${pkgs_core[@]}"
@@ -92,5 +100,9 @@ install_list "Interface" "${pkgs_interface[@]}"
 install_list "Apps"      "${pkgs_apps[@]}"
 install_list "Tools"     "${pkgs_tools[@]}"
 install_list "Fonts"     "${pkgs_fonts[@]}"
+
+install_curl "Bun"       "curl -fsSL https://bun.sh/install | bash"
+install_curl "Zed"       "curl -f https://zed.dev/install.sh | sh"
+install_curl "Homebrew"  '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
 
 echo -e "\nPacotes foram processados com sucesso!"

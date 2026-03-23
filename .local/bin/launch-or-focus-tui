@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Launch or focus on a given TUI identified by the command passed in.
+# Ensures there is only one instance of the TUI open at a time.
+
+APP_ID="org.$(basename "$1")"
+LAUNCH_COMMAND="$HOME/.local/bin/launch-tui $@"
+
+exec $HOME/.local/bin/launch-or-focus "$APP_ID" "$LAUNCH_COMMAND"

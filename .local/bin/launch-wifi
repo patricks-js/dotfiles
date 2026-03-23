@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Launch the wifi controls TUI (provided by impala).
+# Attempts to unblock the wifi service first in case it was blocked.
+
+rfkill unblock wifi
+$HOME/.local/bin/launch-or-focus-tui impala

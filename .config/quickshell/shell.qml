@@ -11,30 +11,37 @@ ShellRoot {
     // ── IPC ───────────────────────────────────────────────────────────────────
     IpcHandler {
         target: "launcher"
-        function toggle(): void { launcher.toggle() }
+        function toggle(): void {
+            launcher.toggle();
+        }
     }
 
     IpcHandler {
         target: "powermenu"
-        function toggle(): void { powerMenu.toggle() }
+        function toggle(): void {
+            powerMenu.toggle();
+        }
     }
 
     // ── Wallpaper list ────────────────────────────────────────────────────────
-    ListModel { id: wallpaperModel }
+    ListModel {
+        id: wallpaperModel
+    }
 
     Process {
         id: wallpaperProc
-        command: ["bash", "-c",
-            "find \"$HOME/wallpapers\" -maxdepth 1 -type f" +
-            " \\( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \\)" +
-            " 2>/dev/null | sort"]
+        command: ["bash", "-c", "find \"$HOME/wallpapers\" -maxdepth 1 -type f" + " \\( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \\)" + " 2>/dev/null | sort"]
 
         stdout: SplitParser {
             onRead: line => {
-                const trimmed = line.trim()
-                if (!trimmed) return
-                const name = trimmed.split("/").pop().replace(/\.[^/.]+$/, "")
-                wallpaperModel.append({ path: trimmed, name: name })
+                const trimmed = line.trim();
+                if (!trimmed)
+                    return;
+                const name = trimmed.split("/").pop().replace(/\.[^/.]+$/, "");
+                wallpaperModel.append({
+                    path: trimmed,
+                    name: name
+                });
             }
         }
     }
@@ -44,39 +51,47 @@ ShellRoot {
         id: launcher
         visible: false
         focusable: true
-        anchors { top: true; bottom: true; left: true; right: true }
-        WlrLayershell.layer:     WlrLayer.Overlay
+        anchors {
+            top: true
+            bottom: true
+            left: true
+            right: true
+        }
+        WlrLayershell.layer: WlrLayer.Overlay
         WlrLayershell.namespace: "launcher"
         color: "transparent"
 
         function open() {
-            visible = true
-            searchField.clear()
-            searchField.forceActiveFocus()
+            visible = true;
+            searchField.clear();
+            searchField.forceActiveFocus();
         }
-        function close()  { visible = false }
-        function toggle() { visible ? close() : open() }
+        function close() {
+            visible = false;
+        }
+        function toggle() {
+            visible ? close() : open();
+        }
 
         readonly property bool wallpaperMode: searchField.text.startsWith(">wallpaper")
-        readonly property bool commandMode:   searchField.text.startsWith(">")
+        readonly property bool commandMode: searchField.text.startsWith(">")
 
         onWallpaperModeChanged: {
             if (wallpaperMode && !wallpaperProc.running) {
-                wallpaperModel.clear()
-                wallpaperProc.running = true
+                wallpaperModel.clear();
+                wallpaperProc.running = true;
             }
         }
 
         property var filteredApps: {
-            if (commandMode) return []
-            const q = searchField.text.trim().toLowerCase()
-            const all = DesktopEntries.applications.values ?? []
-            const sorted = [...all].sort((a, b) => a.name.localeCompare(b.name))
-            if (!q) return sorted
-            return sorted.filter(a =>
-                a.name.toLowerCase().includes(q) ||
-                (a.comment ?? "").toLowerCase().includes(q)
-            )
+            if (commandMode)
+                return [];
+            const q = searchField.text.trim().toLowerCase();
+            const all = DesktopEntries.applications.values ?? [];
+            const sorted = [...all].sort((a, b) => a.name.localeCompare(b.name));
+            if (!q)
+                return sorted;
+            return sorted.filter(a => a.name.toLowerCase().includes(q) || (a.comment ?? "").toLowerCase().includes(q));
         }
 
         // ESC to close
@@ -103,12 +118,22 @@ ShellRoot {
             height: launcher.wallpaperMode ? 260 : 520
             color: "#1a1b26"
             radius: 14
-            border { color: "#414868"; width: 1 }
+            border {
+                color: "#414868"
+                width: 1
+            }
             clip: true
 
-            Behavior on height { NumberAnimation { duration: 180; easing.type: Easing.OutCubic } }
+            Behavior on height {
+                NumberAnimation {
+                    duration: 180
+                    easing.type: Easing.OutCubic
+                }
+            }
 
-            MouseArea { anchors.fill: parent } // block backdrop clicks
+            MouseArea {
+                anchors.fill: parent
+            } // block backdrop clicks
 
             ColumnLayout {
                 anchors.fill: parent
@@ -169,10 +194,8 @@ ShellRoot {
                             hoverEnabled: true
                             cursorShape: Qt.PointingHandCursor
                             onClicked: {
-                                Quickshell.execDetached(["bash", "-c",
-                                    "hyprctl hyprpaper preload \"" + model.path + "\" && " +
-                                    "hyprctl hyprpaper wallpaper \"," + model.path + "\""])
-                                launcher.close()
+                                Quickshell.execDetached(["bash", "-c", "hyprctl hyprpaper preload \"" + model.path + "\" && " + "hyprctl hyprpaper wallpaper \"," + model.path + "\""]);
+                                launcher.close();
                             }
                         }
                     }
@@ -187,18 +210,21 @@ ShellRoot {
                     clip: true
 
                     readonly property int cols: 5
-                    cellWidth:  Math.floor(width / cols)
+                    cellWidth: Math.floor(width / cols)
                     cellHeight: 88
 
                     model: launcher.filteredApps
 
                     delegate: Item {
                         required property var modelData
-                        width:  appGrid.cellWidth
+                        width: appGrid.cellWidth
                         height: appGrid.cellHeight
 
                         Rectangle {
-                            anchors { fill: parent; margins: 4 }
+                            anchors {
+                                fill: parent
+                                margins: 4
+                            }
                             radius: 8
                             color: appMA.containsMouse ? "#ffffff12" : "transparent"
                         }
@@ -211,8 +237,10 @@ ShellRoot {
                             Image {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 source: Quickshell.iconPath(modelData.icon)
-                                width: 36; height: 36
-                                smooth: true; mipmap: true
+                                width: 36
+                                height: 36
+                                smooth: true
+                                mipmap: true
                             }
 
                             Text {
@@ -233,7 +261,10 @@ ShellRoot {
                             anchors.fill: parent
                             hoverEnabled: true
                             cursorShape: Qt.PointingHandCursor
-                            onClicked: { modelData.execute(); launcher.close() }
+                            onClicked: {
+                                modelData.execute();
+                                launcher.close();
+                            }
                         }
                     }
 
@@ -259,8 +290,14 @@ ShellRoot {
 
                         Repeater {
                             model: [
-                                { cmd: ">wallpaper", desc: "Pick a wallpaper from ~/wallpapers" },
-                                { cmd: ">power",     desc: "Open the power menu (press Enter)"  },
+                                {
+                                    cmd: ">wallpaper",
+                                    desc: "Pick a wallpaper from ~/wallpapers"
+                                },
+                                {
+                                    cmd: ">power",
+                                    desc: "Open the power menu (press Enter)"
+                                },
                             ]
 
                             delegate: Row {
@@ -268,7 +305,10 @@ ShellRoot {
                                 Text {
                                     text: modelData.cmd
                                     color: "#7aa2f7"
-                                    font { pixelSize: 13; family: "JetBrainsMono Nerd Font" }
+                                    font {
+                                        pixelSize: 13
+                                        family: "JetBrainsMono Nerd Font"
+                                    }
                                 }
                                 Text {
                                     text: "— " + modelData.desc
@@ -292,12 +332,19 @@ ShellRoot {
                     }
 
                     Row {
-                        anchors { fill: parent; leftMargin: 12; rightMargin: 12 }
+                        anchors {
+                            fill: parent
+                            leftMargin: 12
+                            rightMargin: 12
+                        }
                         spacing: 8
 
                         Text {
                             text: "\uf002"
-                            font { family: "JetBrainsMono Nerd Font"; pixelSize: 14 }
+                            font {
+                                family: "JetBrainsMono Nerd Font"
+                                pixelSize: 14
+                            }
                             color: "#565f89"
                             anchors.verticalCenter: parent.verticalCenter
                         }
@@ -316,11 +363,11 @@ ShellRoot {
                             Keys.onEscapePressed: launcher.close()
                             Keys.onReturnPressed: {
                                 if (text.trim() === ">power") {
-                                    launcher.close()
-                                    powerMenu.open()
+                                    launcher.close();
+                                    powerMenu.open();
                                 } else if (!launcher.commandMode && appGrid.count > 0) {
-                                    launcher.filteredApps[0].execute()
-                                    launcher.close()
+                                    launcher.filteredApps[0].execute();
+                                    launcher.close();
                                 }
                             }
                         }
@@ -335,16 +382,29 @@ ShellRoot {
         id: powerMenu
         visible: false
         focusable: true
-        anchors { top: true; bottom: true; left: true; right: true }
-        WlrLayershell.layer:     WlrLayer.Overlay
+        anchors {
+            top: true
+            bottom: true
+            left: true
+            right: true
+        }
+        WlrLayershell.layer: WlrLayer.Overlay
         WlrLayershell.namespace: "powermenu"
         color: "transparent"
 
-        function open()   { visible = true; focusItem.forceActiveFocus() }
-        function close()  { visible = false }
-        function toggle() { visible ? close() : open() }
+        function open() {
+            visible = true;
+            focusItem.forceActiveFocus();
+        }
+        function close() {
+            visible = false;
+        }
+        function toggle() {
+            visible ? close() : open();
+        }
 
-        onVisibleChanged: if (visible) focusItem.forceActiveFocus()
+        onVisibleChanged: if (visible)
+            focusItem.forceActiveFocus()
 
         Item {
             id: focusItem
@@ -372,43 +432,8 @@ ShellRoot {
             color: "#1a1b26"
             clip: true
 
-            MouseArea { anchors.fill: parent }
-
-            component PowerBtn: Rectangle {
-                property string icon
-                property string label
-                property color  bgColor
-                signal activated
-
-                color: btnArea.containsMouse ? Qt.lighter(bgColor, 1.18) : bgColor
-                Behavior on color { ColorAnimation { duration: 120 } }
-
-                Column {
-                    anchors.centerIn: parent
-                    spacing: 10
-
-                    Text {
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        text: parent.parent.icon
-                        color: "#ffffff"
-                        font { family: "JetBrainsMono Nerd Font"; pixelSize: 40 }
-                    }
-
-                    Text {
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        text: parent.parent.label
-                        color: "#ffffff"
-                        font.pixelSize: 13
-                    }
-                }
-
-                MouseArea {
-                    id: btnArea
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    cursorShape: Qt.PointingHandCursor
-                    onClicked: parent.activated()
-                }
+            MouseArea {
+                anchors.fill: parent
             }
 
             GridLayout {
@@ -420,39 +445,95 @@ ShellRoot {
                 PowerBtn {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    icon:    "\uf023"
-                    label:   "Lock"
+                    icon: "\uf023"
+                    label: "Lock"
                     bgColor: "#7a6550"
-                    onActivated: { powerMenu.close(); Quickshell.execDetached(["hyprlock"]) }
+                    onActivated: {
+                        powerMenu.close();
+                        Quickshell.execDetached(["hyprlock"]);
+                    }
                 }
 
                 PowerBtn {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    icon:    "\uf011"
-                    label:   "Shutdown"
+                    icon: "\uf011"
+                    label: "Shutdown"
                     bgColor: "#3d4b5c"
-                    onActivated: { powerMenu.close(); Quickshell.execDetached(["systemctl", "poweroff"]) }
+                    onActivated: {
+                        powerMenu.close();
+                        Quickshell.execDetached(["systemctl", "poweroff"]);
+                    }
                 }
 
                 PowerBtn {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    icon:    "\uf186"
-                    label:   "Sleep"
+                    icon: "\uf186"
+                    label: "Sleep"
                     bgColor: "#3d4b5c"
-                    onActivated: { powerMenu.close(); Quickshell.execDetached(["systemctl", "suspend"]) }
+                    onActivated: {
+                        powerMenu.close();
+                        Quickshell.execDetached(["systemctl", "suspend"]);
+                    }
                 }
 
                 PowerBtn {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    icon:    "\uf021"
-                    label:   "Restart"
+                    icon: "\uf021"
+                    label: "Restart"
                     bgColor: "#7a4555"
-                    onActivated: { powerMenu.close(); Quickshell.execDetached(["systemctl", "reboot"]) }
+                    onActivated: {
+                        powerMenu.close();
+                        Quickshell.execDetached(["systemctl", "reboot"]);
+                    }
                 }
             }
+        }
+    }
+
+    component PowerBtn: Rectangle {
+        property string icon
+        property string label
+        property color bgColor
+        signal activated
+
+        color: btnArea.containsMouse ? Qt.lighter(bgColor, 1.18) : bgColor
+        Behavior on color {
+            ColorAnimation {
+                duration: 120
+            }
+        }
+
+        Column {
+            anchors.centerIn: parent
+            spacing: 10
+
+            Text {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: parent.parent.icon
+                color: "#ffffff"
+                font {
+                    family: "JetBrainsMono Nerd Font"
+                    pixelSize: 40
+                }
+            }
+
+            Text {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: parent.parent.label
+                color: "#ffffff"
+                font.pixelSize: 13
+            }
+        }
+
+        MouseArea {
+            id: btnArea
+            anchors.fill: parent
+            hoverEnabled: true
+            cursorShape: Qt.PointingHandCursor
+            onClicked: parent.activated()
         }
     }
 }

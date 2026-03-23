@@ -58,6 +58,7 @@ pkgs_tools=(
   openvpn
   ufw
   pacman-contrib
+  wl-clip-persist
   unzip
   zip
   neovim
@@ -97,12 +98,12 @@ echo ":: Iniciando instalação de pacotes..."
 
 install_list "Core"      "${pkgs_core[@]}"
 install_list "Interface" "${pkgs_interface[@]}"
-install_list "Apps"      "${pkgs_apps[@]}"
+#install_list "Apps"      "${pkgs_apps[@]}"
 install_list "Tools"     "${pkgs_tools[@]}"
 install_list "Fonts"     "${pkgs_fonts[@]}"
 
-install_curl "Bun"       "curl -fsSL https://bun.sh/install | bash"
-install_curl "Zed"       "curl -f https://zed.dev/install.sh | sh"
-install_curl "Homebrew"  '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+#install_curl "Bun"       "curl -fsSL https://bun.sh/install | bash"
+#install_curl "Zed"       "curl -f https://zed.dev/install.sh | sh"
+#install_curl "Homebrew"  '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
 
 echo -e "\nPacotes foram processados com sucesso!"

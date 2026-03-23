@@ -47,6 +47,13 @@ pkgs_tools=(
   ffmpegthumbnailer
   uwsm
   tar
+  impala
+  bluetui
+  mako
+  gum
+  xdg-terminal-exec
+  wiremix
+  gpu-screen-recorder
   openvpn
   ufw
   pacman-contrib

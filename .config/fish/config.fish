@@ -157,3 +157,7 @@ set --export PATH "$PATH:$HOME/flutter/bin"
 
 # Homebrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv fish)"
+
+# n
+set --export N_PREFIX "$HOME/.n"
+set --export PATH $N_PREFIX/bin $PATH

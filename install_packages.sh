@@ -18,10 +18,12 @@ pkgs_core=(
   wl-clipboard
   qt5-wayland
   qt6-wayland
+  pamixer
   xdg-user-dirs
   udiskie
   brightnessctl
   xdg-desktop-portal
+  quickshell
   sddm
 )
 

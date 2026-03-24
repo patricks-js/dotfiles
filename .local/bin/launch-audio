@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# Launch the audio controls TUI (provided by wiremix).
-
-$HOME/.local/bin/launch-or-focus-tui wiremix

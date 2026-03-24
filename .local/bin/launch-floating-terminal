@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# Launch a command in a floating terminal window.
-# The app-id can be used in your compositor to apply floating window rules.
-
-cmd="$*"
-exec setsid uwsm-app -- xdg-terminal-exec --app-id=org.waybar.floating -e bash -c "$cmd"

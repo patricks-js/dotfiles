@@ -4,4 +4,4 @@
 # Also attempts to unblock bluetooth service if rfkill had blocked it.
 
 rfkill unblock bluetooth
-exec $HOME/.local/bin/launch-floating-terminal bluetui
+$HOME/.local/bin/launch-or-focus-tui bluetui

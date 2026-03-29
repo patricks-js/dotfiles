@@ -76,7 +76,6 @@ $time"""
 
 continuation_prompt = '▶▶ '
 
-
 # style_choices:
 # bold
 # italic
@@ -100,7 +99,7 @@ continuation_prompt = '▶▶ '
 disabled = false
 format = "[$path](bold fg:#8be9fd)"
 truncate_to_repo = false
-# home_symbol = "" 
+# home_symbol = ""
 
 [git_branch]
 format = " [  $branch](fg:#9198a1)"
@@ -111,7 +110,6 @@ behind = '⇣${count}'
 diverged = '⇕⇡${ahead_count}⇣${behind_count}'
 format = '[[( $all_status$ahead_behind )](fg:#769ff0)]($style)'
 style = "bg:#394260"
-
 
 [time]
 disabled = false
@@ -224,7 +222,6 @@ style = "bold bright-cyan"
 format = " dart [$symbol]($style)"
 symbol = " "
 
-
 [elixir]
 style = "bold bright-yellow"
 format = " exs [$symbol OTP $otp_version ]($style)"
@@ -278,12 +275,10 @@ style = "bold bright-yellow"
 format = " spack [$symbol$environment]($style)"
 symbol = "◇ "
 
-
 [zig]
 style = "bold bright-yellow"
 format = " zig [$symbol]($style)"
 symbol = " "
-
 
 [scala]
 format = " scala [$symbol]($style)"

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 count=$(checkupdates 2>/dev/null | wc -l)
-aur=$(yay -Qum 2>/dev/null | wc -l)
+aur=$(paru -Qum 2>/dev/null | wc -l)
 total=$((count + aur))
 
 if (( total > 0 )); then

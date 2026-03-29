@@ -2,11 +2,14 @@
 	defaultBranch = main
 
 [user]
-	name = Lucas Patrick
+	name = Patrick
 	email = tech.patrick.lsilva@gmail.com
 
 [core]
 	editor = nvim
+
+[pull]
+	rebase = true
 
 [alias]
 	st = status -s

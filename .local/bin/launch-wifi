@@ -4,4 +4,4 @@
 # Attempts to unblock the wifi service first in case it was blocked.
 
 rfkill unblock wifi
-$HOME/.local/bin/launch-floating-terminal impala
+$HOME/.local/bin/launch-or-focus-tui impala

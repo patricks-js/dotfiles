@@ -7,12 +7,14 @@
   "modules-left": ["custom/arch", "hyprland/workspaces"],
   "modules-center": [
     "clock",
+    "custom/update",
     "custom/screenrecording-indicator",
     "custom/idle-indicator",
     "custom/notification-silencing-indicator",
   ],
   "modules-right": [
     "group/tray-expander",
+    "custom/vpn",
     "bluetooth",
     "network",
     "pulseaudio",
@@ -43,11 +45,12 @@
       "3": [],
       "4": [],
       "5": [],
+      "6": [],
     },
   },
   "custom/arch": {
     "format": "󰣇",
-    "on-click": "qs ipc call launcher toggle",
+    "on-click": "rofi -dmenu",
     "tooltip": false,
   },
   "cpu": {
@@ -88,6 +91,7 @@
     "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
     "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
     "interval": 5,
+    "on-click": "$HOME/.local/bin/power-menu",
     "states": {
       "warning": 20,
       "critical": 10,
@@ -148,6 +152,20 @@
     "exec": "$HOME/.config/waybar/indicators/notification-silencing.sh",
     "signal": 10,
     "return-type": "json",
+  },
+  "custom/vpn": {
+    "exec": "$HOME/.config/waybar/indicators/vpn.sh",
+    "return-type": "json",
+    "interval": 5,
+    "tooltip-format": "{}",
+  },
+  "custom/update": {
+    "format": "",
+    "exec": "$HOME/.local/bin/check-updates.sh",
+    "on-click": "$HOME/.local/bin/launch-floating-terminal paru -Syu",
+    "tooltip-format": "Package updates available",
+    "signal": 7,
+    "interval": 21600,
   },
   "custom/power": {
     "format": "󰐥",

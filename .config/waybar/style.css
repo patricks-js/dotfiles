@@ -7,7 +7,7 @@
   border: none;
   border-radius: 0;
   min-height: 0;
-  font-family: 'JetBrainsMono Nerd Font';
+  font-family: "JetBrainsMono Nerd Font";
   font-size: 12px;
 }
 
@@ -34,13 +34,18 @@
 #battery,
 #pulseaudio,
 #custom-arch,
-#custom-power {
+#custom-power,
+#custom-update {
   min-width: 12px;
   margin: 0 7.5px;
 }
 
 #tray {
   margin-right: 16px;
+}
+
+#custom-vpn {
+  margin-right: 13px;
 }
 
 #bluetooth {
@@ -57,6 +62,10 @@
 
 tooltip {
   padding: 2px;
+}
+
+#custom-update {
+  font-size: 10px;
 }
 
 #clock {

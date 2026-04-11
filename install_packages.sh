@@ -2,33 +2,20 @@
 
 set -euo pipefail
 
-pkgs_core=(
-  hyprland hyprlock hyprpaper hypridle hyprsunset hyprpolkitagent
-  xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
-  uwsm
-  waybar mako
-  sddm kitty wl-clipboard wl-clip-persist cliphist
-  qt5-wayland qt6-wayland
-)
-
 pkgs_system=(
-  udiskie brightnessctl pamixer wiremix
-  bluetui impala
-  openvpn ufw v4l2loopback-dkms
-  pacman-contrib downgrade
-  gvfs thunar-volman catfish
+  kitty wl-clipboard
+  openvpn v4l2loopback-dkms
+  downgrade
 )
 
-pkgs_interface=(
-  thunar thunar-archive-plugin
-  tumbler ffmpegthumbnailer
-  nwg-look bibata-cursor-theme-bin papirus-icon-theme
-  grimblast-git satty
+pkgs_appearance=(
+  bibata-cursor-theme-bin
+  papirus-icon-theme
 )
 
 pkgs_terminal=(
   neovim zellij starship
-  lsd fzf zoxide bat jq gum
+  lsd fzf zoxide bat jq
   unzip zip tar
   imagemagick stow
 )
@@ -40,10 +27,12 @@ pkgs_fonts=(
 )
 
 pkgs_apps=(
-  zen-browser-bin obsidian discord
+  zen-browser-bin helium-browser-bin
+  obsidian discord
   obs-studio gpu-screen-recorder
   jetbrains-toolbox
   bruno-bin beekeeper-studio-bin
+  hydra-launcher-bin
 )
 
 install_list() {
@@ -58,11 +47,10 @@ install_curl() {
   eval "$cmd" || echo -e "\e[1;31m!!\e[0m Failed to install $label"
 }
 
-echo ":: Starting installation of Hyprland setup..."
+echo ":: Starting setup installation..."
 
-install_list "Core"      "${pkgs_core[@]}"
 install_list "Sistema"   "${pkgs_system[@]}"
-install_list "Interface" "${pkgs_interface[@]}"
+install_list "Appearance" "${pkgs_appearance[@]}"
 install_list "Terminal"  "${pkgs_terminal[@]}"
 install_list "Fonts"     "${pkgs_fonts[@]}"
 install_list "Apps"    "${pkgs_apps[@]}"
@@ -75,8 +63,6 @@ echo -e "\n\e[1;34m::\e[0m Cleaning up default config files to avoid stow confli
 rm -f  "$HOME/.config/fish/config.fish"
 rm -rf "$HOME/.config/fastfetch"
 rm -rf "$HOME/.config/kitty"
-rm -rf "$HOME/.config/hypr"
-rm -rf "$HOME/.config/waybar"
 
 echo -e "\n\e[1;34m::\e[0m Running stow to symlink dotfiles..."
 stow --dir="$(cd "$(dirname "$0")" && pwd)" --target="$HOME" .

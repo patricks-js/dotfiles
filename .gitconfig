@@ -1,32 +1,40 @@
 [init]
-	defaultBranch = main
+    defaultBranch = main
 
 [user]
-	name = Patrick
-	email = tech.patrick.lsilva@gmail.com
+    name = Patrick
+    email = tech.patrick.lsilva@gmail.com
 
 [core]
-	editor = nvim
+    editor = nvim
 
 [pull]
-	rebase = true
+    rebase = false
+
+[push]
+    autoSetupRemote = true
+
+[rerere]
+    enabled = true
 
 [alias]
-	st = status -s
-	conf = config --global --edit
-	l = log --pretty=format:'%C(blue)%h%C(red)%d %C(white)%s - %C(cyan)%cn, %C(green)%cr'
-	a = add .
-	b = branch
-	cm = commit -m
-	ci = !git a && git cm
-	cn = clone
-	rls = remote -v
-	pr = pull --rebase
-	ps = push
-	psm = !git ps origin main
-	undo = checkout .
-	rollback = reset --soft HEAD~1 # Undo last commit
-	ck = checkout
-	bra = branch -a
-	amend = commit --amend --no-edit
-	ignore = "!f() { git rm --cached `git ls-files -i -c --exclude-from=.gitignore`; } ; f" # Removes files that are in .gitignore from the repository
+    st = status -s
+    conf = config --global --edit
+    l = log --pretty=format:'%C(blue)%h%C(red)%d %C(white)%s - %C(cyan)%cn, %C(green)%cr'
+    a = add .
+    b = branch
+    cm = commit -m
+    ci = !git a && git cm
+    cn = clone
+    rls = remote -v
+    pr = pull --rebase
+    ps = push
+    psm = !git ps origin main
+    undo = checkout .
+    rollback = reset --soft HEAD~1 # Undo last commit
+    ck = switch
+    bra = branch -a
+    amend = commit --amend --no-edit
+    ignore = "!f() { git rm --cached `git ls-files -i -c --exclude-from=.gitignore`; } ; f" # Removes files that are in .gitignore from the repository
+    tree = log --oneline --graph --all
+    fl = push --force-with-lease

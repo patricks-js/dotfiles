@@ -46,13 +46,13 @@ set --export PATH "$PATH:$ANDROID_HOME/emulator"
 set --export PATH "$PATH:$ANDROID_HOME/platform-tools"
 
 # Java
-set --export JAVA_HOME "/usr/lib/jvm/java-24-openjdk"
+set --export JAVA_HOME "/usr/lib/jvm/java-17-openjdk"
 set --export PATH "$PATH:$JAVA_HOME/bin"
 
 # .NET Core SDK tools
 set --export PATH "$PATH:$HOME/.dotnet/tools"
 
-# Flutter
+# Flutter & Dart
 set --export CHROME_EXECUTABLE "/usr/bin/google-chrome-stable"
 set --export PATH "$PATH:$HOME/flutter/bin"
 

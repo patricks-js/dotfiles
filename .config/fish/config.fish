@@ -2,6 +2,9 @@ source /usr/share/cachyos-fish-config/cachyos-config.fish
 
 set -g fish_greeting
 
+# Homebrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv fish)"
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
     starship init fish | source
@@ -55,9 +58,6 @@ set --export PATH "$PATH:$HOME/.dotnet/tools"
 # Flutter & Dart
 set --export CHROME_EXECUTABLE "/usr/bin/google-chrome-stable"
 set --export PATH "$PATH:$HOME/flutter/bin"
-
-# Homebrew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv fish)"
 
 # n
 set --export N_PREFIX "$HOME/.n"
